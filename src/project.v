@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Your Name
+ * Copyright (c) 2024 Darryl L. Miles
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -20,5 +20,6 @@ module tt_um_example (
   assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
+
 
 endmodule
