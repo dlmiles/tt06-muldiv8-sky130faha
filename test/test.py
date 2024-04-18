@@ -97,7 +97,7 @@ def debug_info(dut, level: int = 1, *args) -> None:
         dut._log.info(*args)
 
 
-def report_summart(dut) -> None:
+def report_summary(dut) -> None:
     success = True
     if pfail_count > 0:
         dut._log.error(f"    PFAIL count = {pfail_count} (Multipy Product)")
@@ -604,37 +604,37 @@ async def test_sync(dut):
     dut._log.info(f"rb0={str(dut.uo_out.value)}")
 
     dut.ui_in.value = 0x00 # zero input
-    dut.uio_in.value = 0x80 # DIV mode, LO
+    dut.uio_in.value = 0x80 # DIVU mode, LO
     await ClockCycles(dut.clk, 1) # one half
     dut._log.info(f"rb1={str(dut.uo_out.value)}")
 
-    dut.uio_in.value = 0x81 # MUL mode, HI
+    dut.uio_in.value = 0x81 # DIVU mode, HI
     await ClockCycles(dut.clk, 1) # other half
     dut._log.info(f"rb2={str(dut.uo_out.value)}")
 
     dut.ui_in.value = 0x01 # one input
 
-    dut.uio_in.value = 0x80 # MUL mode, LO
+    dut.uio_in.value = 0x80 # DIVU mode, LO
     await ClockCycles(dut.clk, 1) # one half
     dut._log.info(f"rb3={str(dut.uo_out.value)}")
     readback0 = dut.uo_out.value
 
-    dut.uio_in.value = 0x81 # MUL mode, HI
+    dut.uio_in.value = 0x81 # DIVU mode, HI
     await ClockCycles(dut.clk, 1) # send 0x01
     dut._log.info(f"rb4={str(dut.uo_out.value)}")
     readback1 = dut.uo_out.value
 
-    dut.uio_in.value = 0x80 # MUL mode, LO
+    dut.uio_in.value = 0x80 # DIVU mode, LO
     await ClockCycles(dut.clk, 1) # send 0x01
     dut._log.info(f"rb5={str(dut.uo_out.value)}")
     readback2 = dut.uo_out.value
 
-    dut.uio_in.value = 0x81 # MUL mode, HI
+    dut.uio_in.value = 0x81 # DIVU mode, HI
     await ClockCycles(dut.clk, 1) # send 0x01
     dut._log.info(f"rb6={str(dut.uo_out.value)}")
 
     dut.ui_in.value = 0x00 # one input
-    dut.uio_in.value = 0x00 # MUL mode, LO
+    dut.uio_in.value = 0x00 # DIVU mode, LO
 
     dut._log.info(f"readback0={readback0} readback1={readback1} readback2={readback2}")
 
@@ -674,7 +674,7 @@ async def test_muldiv8_sky130faha(dut):
     await ClockCycles(dut.clk, 2)
 
     dut._log.info("reset (inactive)")
-    dut.rst_n.value = 1                 # come out of reset
+    dut.rst_n.value = 1                 # leave reset
     await ClockCycles(dut.clk, 2)
 
 
@@ -809,4 +809,4 @@ async def test_muldiv8_sky130faha(dut):
     debug(dut, 'DONE')
     await ClockCycles(dut.clk, 10)
 
-    report_summart(dut)
+    report_summary(dut)
