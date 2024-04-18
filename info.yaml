@@ -16,7 +16,8 @@ project:
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
     - "top_tt_um_dlmiles_muldiv8.v"
-    - "MULDIV8Top.v"
+    - "pdk_sky130/sky130_fd_sc_hd__dlrtp.v"
+    - "TT06MULDIV8Top.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
@@ -41,10 +42,10 @@ pinout:
   uo[7]: "Result7 see docs"
 
   # Bidirectional pins
-  uio[0]: "HI=1/lo=0 mux of Data and Result (input only)"
+  uio[0]: "Addr bit0 HI=1/lo=0 mux of Data and Result (input only)"
   uio[1]: "unused"
   uio[2]: "unused"
-  uio[3]: "unused"
+  uio[3]: "Result mux registered=1/immediate=0 (input only)"
   uio[4]: "DIV error overflow (output only)"
   uio[5]: "DIV error divide-by-zero (output only)"
   uio[6]: "OPSIGNED mode (input only)"
