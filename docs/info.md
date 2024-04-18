@@ -37,38 +37,48 @@ Due to the limited total IOs available at the external TT interface it is
 necessary to clock the project and setup UI_IN[0] to load each of the 2
 8-bit input registers.
 
-The data is latched at the CLK NEGEDGE and the value provided to the
-combinational logic MUL/DIV operations (which are seperate logic modules)
-with the answer becoming immediately available (after propagation and
-ripple settling time) at the outputs.
+The input side uses latches to capture, which means during the appropiate
+phase CLK (high) and ADDR state, it alternatively opens/closes, the data is
+becomes captured into the latches at the CLK NEGEDGE.  During the whole time
+it is open and closed it is providing the data into the appropiate input
+side of both MUL and DIV units (which are seperate logic modules).
 
-The result output is also multiplexed and has an immediate and register
+The result becomes immediately available (after propagation and ripple
+settling time) at the outputs.  While the latch it open, maybe artificially
+by extending duty-cycle of CLK, you should also be able to conduct
+experiments on modifying input and observing output (when in immediate
+result mode)
+
+The result output is also multiplexed and has an immediate and registered
 mode.  The immediate mode provides a direct visibility of the MUL/DIV
-combintational timing between input and outputs (you need to account for
-address multiplex of high-low 8bit sides of result).  The registered mode
-capture the result in full so that it is possible to pipeline interleave
-request and result information to achieve higher throughput.
+combintational output and should allos timing between input and outputs
+to be observed.  (you need to account for address multiplex of high-low
+8bit sides of result).  The registered mode capture the result in full at
+the time of the last ADDR and a CLK posedge.  This allows you to change
+the values for the input side during the next few cycles, while the module
+ensures to sustain the result value of the last computation at the output.
+With an appropiate pipeline interleave request and result information to
+achieve higher throughput.
 
-So one half of the answer is immediately available to read and the other
-half of the answer can be read by toggling UI_IN[0] (address bit0).
-Clocking is needed for registered output mode, but not necessarily for
-immediate mode.
+---
+**FIXME**
 
-// FIXME please check out the original githun for any enahcnaed
-// documentation for this project, potentially improved information
-// nearer PCB+IC delivery (to customer) schedule but also post-production
-// post-physically testing results and information.
-// I hope to produce some kind graphs showing the timing capture and
-// reliability to show and demonstrate the cascade effect.  This assume
-// I have the design correct to allow this to happen, but there are some
-// tricked (like extending CLK on-duty cycle when latches are open) enough
-// to see result capture output.
+FIXME please check out the original github for any enhanced
+documentation for this project, potentially improved information
+nearer PCB+IC delivery (to customer) schedule but also post-production
+post-physically testing results and information.
+I hope to produce some kind graphs showing the timing capture and
+reliability to show and demonstrate the cascade effect.  This assumes
+I have the design correct to allow this to happen, but there are some
+tricks (like extending CLK on-duty cycle when latches are open) enough
+to see result capture output.
 
-// FIXME provide wavedrom diagram (MULU, MULS, DIVU, DIVS)
+FIXME provide wavedrom diagram (MULU, MULS, DIVU, DIVS)
 
-// FIXME explain IMMediate mode and REGistered mode (to pipeline)
+FIXME explain IMMediate mode and REGistered mode (to pipeline)
 
-// FIXME provide blockdiagram of functional units
+```
+FIXME provide blockdiagram of functional units
 //    D
 //   MUX
 //   X Y registers (loaded from multiplexed D)
@@ -76,12 +86,14 @@ immediate mode.
 //   P P registers
 //  DEMUX
 //    R
+```
 
-// FIXME explain architective difference to previous example and
-// considerations why to change.
+FIXME explain architective difference to previous example and
+considerations why to change.
 
-// FIXME explain addressing mode to allow much wider units and
-//  potentially uneven input sizes.
+FIXME explain addressing mode to allow much wider units and
+ potentially uneven input sizes.
+---
 
 
 Multiplier (signed/unsigned)
@@ -152,11 +164,11 @@ detailed routing work around it as-is.
 
 ## TODO
 
-Fixup the original logicsim schematic labels.
+Fixup the original logisim schematic labels.
 
 The input re-ordering (which made the SpinalHDL algo easier)
 
-Relabel the P6_EXTND_EN to P7_EXTND_EN the original prodict index label was
+Relabel the P6_EXTND_EN to P7_EXTND_EN the original product index label was
 a bad choice in retrospect.
 
 
@@ -179,5 +191,5 @@ DEND and DSOR can be different sizes.
 When input width can be unequal, test out the EOVERFLOW in the divider is
 wired to the correct port and works in this scenarios.
 
-Provide unit testing for commong multipler sizes, obvious byte boudnaries
+Provide unit testing for common multipler sizes, obvious byte boundaries
 but also the sizes common in FPGA DSP primitives.
