@@ -17,7 +17,11 @@ set ::env(PL_TARGET_DENSITY) 0.6
 # CLOCK_PERIOD - Increase this in case you are getting setup time violations.
 # The value is in nanoseconds, so 20ns == 50MHz.
 # Increased for slower clock 25ns == 40MHz
-set ::env(CLOCK_PERIOD) "25"
+# Increased for slower clock 30ns == 33.3MHz
+# Increased for slower clock 35ns == 28.57MHz
+# Increased for slower clock 50ns == 20MHz
+# Increased for slower clock 80ns == 12.5MHz
+set ::env(CLOCK_PERIOD) "80"
 
 # Hold slack margin - Increase them in case you are getting hold violations.
 set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1

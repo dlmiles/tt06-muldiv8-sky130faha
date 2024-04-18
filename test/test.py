@@ -652,7 +652,7 @@ async def test_sync(dut):
 
 
 @cocotb.test()
-async def test_muldiv8(dut):
+async def test_muldiv8_sky130faha(dut):
     dut._log.info("Start")
     clock = Clock(dut.clk, 10, units="us")
     cocotb.start_soon(clock.start())

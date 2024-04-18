@@ -86,7 +86,7 @@ module TT06MULDIV8Top (
   wire       [1:0]    switch_Misc_l226;
   reg        [7:0]    imm8;
   wire       [15:0]   res;
-  wire                when_MULDIV8Top_l756;
+  wire                when_MULDIV8Top_l750;
   reg        [7:0]    regRbyte;
   reg        [3:0]    _zz_uio_oe;
   reg        [1:0]    _zz_uio_oe_1;
@@ -309,7 +309,7 @@ module TT06MULDIV8Top (
   end
 
   assign res = (muldivMode ? {div8_io_q,div8_io_r} : mul8_io_p);
-  assign when_MULDIV8Top_l756 = (addr == 1'b1);
+  assign when_MULDIV8Top_l750 = (addr == 1'b1);
   always @(*) begin
     case(addr)
       1'b1 : begin
@@ -334,7 +334,7 @@ module TT06MULDIV8Top (
   end
 
   always @(posedge clk) begin
-    if(when_MULDIV8Top_l756) begin
+    if(when_MULDIV8Top_l750) begin
       regR <= res;
     end
   end
@@ -353,47 +353,47 @@ module Div (
   output              io_edivzero
 );
 
-  wire                HAD_DVD_TWOS_0_io_a;
-  wire                HAD_DVD_TWOS_0_io_b;
-  wire                HAD_DVD_TWOS_1_io_a;
-  wire                HAD_DVD_TWOS_2_io_a;
-  wire                HAD_DVD_TWOS_3_io_a;
-  wire                HAD_DVD_TWOS_4_io_a;
-  wire                HAD_DVD_TWOS_5_io_a;
-  wire                HAD_DVD_TWOS_6_io_a;
-  wire                HAD_DVD_TWOS_7_io_a;
-  wire                HAR0_SIGN_io_a;
-  wire                HAR1_SIGN_io_a;
-  wire                HAR2_SIGN_io_a;
-  wire                HAR3_SIGN_io_a;
-  wire                HAR4_SIGN_io_a;
-  wire                HAR5_SIGN_io_a;
-  wire                HAR6_SIGN_io_a;
-  wire                HAR7_SIGN_io_a;
-  wire                HAQ0_SIGN_io_a;
-  wire                HAQ1_SIGN_io_a;
-  wire                HAQ2_SIGN_io_a;
-  wire                HAQ3_SIGN_io_a;
-  wire                HAQ4_SIGN_io_a;
-  wire                HAQ5_SIGN_io_a;
-  wire                HAQ6_SIGN_io_a;
-  wire                HAQ7_SIGN_io_a;
-  wire                HAD_DVD_TWOS_0_io_s;
-  wire                HAD_DVD_TWOS_0_io_c;
-  wire                HAD_DVD_TWOS_1_io_s;
-  wire                HAD_DVD_TWOS_1_io_c;
-  wire                HAD_DVD_TWOS_2_io_s;
-  wire                HAD_DVD_TWOS_2_io_c;
-  wire                HAD_DVD_TWOS_3_io_s;
-  wire                HAD_DVD_TWOS_3_io_c;
-  wire                HAD_DVD_TWOS_4_io_s;
-  wire                HAD_DVD_TWOS_4_io_c;
-  wire                HAD_DVD_TWOS_5_io_s;
-  wire                HAD_DVD_TWOS_5_io_c;
-  wire                HAD_DVD_TWOS_6_io_s;
-  wire                HAD_DVD_TWOS_6_io_c;
-  wire                HAD_DVD_TWOS_7_io_s;
-  wire                HAD_DVD_TWOS_7_io_c;
+  wire                HAD_DVD_TWOS_0_A;
+  wire                HAD_DVD_TWOS_0_B;
+  wire                HAD_DVD_TWOS_1_A;
+  wire                HAD_DVD_TWOS_2_A;
+  wire                HAD_DVD_TWOS_3_A;
+  wire                HAD_DVD_TWOS_4_A;
+  wire                HAD_DVD_TWOS_5_A;
+  wire                HAD_DVD_TWOS_6_A;
+  wire                HAD_DVD_TWOS_7_A;
+  wire                HAR0_SIGN_A;
+  wire                HAR1_SIGN_A;
+  wire                HAR2_SIGN_A;
+  wire                HAR3_SIGN_A;
+  wire                HAR4_SIGN_A;
+  wire                HAR5_SIGN_A;
+  wire                HAR6_SIGN_A;
+  wire                HAR7_SIGN_A;
+  wire                HAQ0_SIGN_A;
+  wire                HAQ1_SIGN_A;
+  wire                HAQ2_SIGN_A;
+  wire                HAQ3_SIGN_A;
+  wire                HAQ4_SIGN_A;
+  wire                HAQ5_SIGN_A;
+  wire                HAQ6_SIGN_A;
+  wire                HAQ7_SIGN_A;
+  wire                HAD_DVD_TWOS_0_COUT;
+  wire                HAD_DVD_TWOS_0_SUM;
+  wire                HAD_DVD_TWOS_1_COUT;
+  wire                HAD_DVD_TWOS_1_SUM;
+  wire                HAD_DVD_TWOS_2_COUT;
+  wire                HAD_DVD_TWOS_2_SUM;
+  wire                HAD_DVD_TWOS_3_COUT;
+  wire                HAD_DVD_TWOS_3_SUM;
+  wire                HAD_DVD_TWOS_4_COUT;
+  wire                HAD_DVD_TWOS_4_SUM;
+  wire                HAD_DVD_TWOS_5_COUT;
+  wire                HAD_DVD_TWOS_5_SUM;
+  wire                HAD_DVD_TWOS_6_COUT;
+  wire                HAD_DVD_TWOS_6_SUM;
+  wire                HAD_DVD_TWOS_7_COUT;
+  wire                HAD_DVD_TWOS_7_SUM;
   wire                DU_Q0D0d8_EXT_io_s;
   wire                DU_Q0D0d8_EXT_io_c;
   wire                DU_Q0D0d9_EXT_io_s;
@@ -562,39 +562,39 @@ module Div (
   wire                DU_Q7D7d6_io_c;
   wire                DU_Q7D7d7_io_s;
   wire                DU_Q7D7d7_io_c;
-  wire                HAR0_SIGN_io_s;
-  wire                HAR0_SIGN_io_c;
-  wire                HAR1_SIGN_io_s;
-  wire                HAR1_SIGN_io_c;
-  wire                HAR2_SIGN_io_s;
-  wire                HAR2_SIGN_io_c;
-  wire                HAR3_SIGN_io_s;
-  wire                HAR3_SIGN_io_c;
-  wire                HAR4_SIGN_io_s;
-  wire                HAR4_SIGN_io_c;
-  wire                HAR5_SIGN_io_s;
-  wire                HAR5_SIGN_io_c;
-  wire                HAR6_SIGN_io_s;
-  wire                HAR6_SIGN_io_c;
-  wire                HAR7_SIGN_io_s;
-  wire                HAR7_SIGN_io_c;
-  wire                HAQ0_SIGN_io_s;
-  wire                HAQ0_SIGN_io_c;
-  wire                HAQ1_SIGN_io_s;
-  wire                HAQ1_SIGN_io_c;
-  wire                HAQ2_SIGN_io_s;
-  wire                HAQ2_SIGN_io_c;
-  wire                HAQ3_SIGN_io_s;
-  wire                HAQ3_SIGN_io_c;
-  wire                HAQ4_SIGN_io_s;
-  wire                HAQ4_SIGN_io_c;
-  wire                HAQ5_SIGN_io_s;
-  wire                HAQ5_SIGN_io_c;
-  wire                HAQ6_SIGN_io_s;
-  wire                HAQ6_SIGN_io_c;
-  wire                HAQ7_SIGN_io_s;
-  wire                HAQ7_SIGN_io_c;
-  wire       [0:0]    _zz_io_b;
+  wire                HAR0_SIGN_COUT;
+  wire                HAR0_SIGN_SUM;
+  wire                HAR1_SIGN_COUT;
+  wire                HAR1_SIGN_SUM;
+  wire                HAR2_SIGN_COUT;
+  wire                HAR2_SIGN_SUM;
+  wire                HAR3_SIGN_COUT;
+  wire                HAR3_SIGN_SUM;
+  wire                HAR4_SIGN_COUT;
+  wire                HAR4_SIGN_SUM;
+  wire                HAR5_SIGN_COUT;
+  wire                HAR5_SIGN_SUM;
+  wire                HAR6_SIGN_COUT;
+  wire                HAR6_SIGN_SUM;
+  wire                HAR7_SIGN_COUT;
+  wire                HAR7_SIGN_SUM;
+  wire                HAQ0_SIGN_COUT;
+  wire                HAQ0_SIGN_SUM;
+  wire                HAQ1_SIGN_COUT;
+  wire                HAQ1_SIGN_SUM;
+  wire                HAQ2_SIGN_COUT;
+  wire                HAQ2_SIGN_SUM;
+  wire                HAQ3_SIGN_COUT;
+  wire                HAQ3_SIGN_SUM;
+  wire                HAQ4_SIGN_COUT;
+  wire                HAQ4_SIGN_SUM;
+  wire                HAQ5_SIGN_COUT;
+  wire                HAQ5_SIGN_SUM;
+  wire                HAQ6_SIGN_COUT;
+  wire                HAQ6_SIGN_SUM;
+  wire                HAQ7_SIGN_COUT;
+  wire                HAQ7_SIGN_SUM;
+  wire       [0:0]    _zz_B;
   wire                isZero;
   wire                dvdTwosEn;
   wire                dvrTwosEn;
@@ -617,56 +617,56 @@ module Div (
   wire                xorDvr_6;
   wire                xorDvr_7;
 
-  assign _zz_io_b = dvdTwosEn;
-  HA_24 HAD_DVD_TWOS_0 (
-    .io_a (HAD_DVD_TWOS_0_io_a), //i
-    .io_b (HAD_DVD_TWOS_0_io_b), //i
-    .io_s (HAD_DVD_TWOS_0_io_s), //o
-    .io_c (HAD_DVD_TWOS_0_io_c)  //o
+  assign _zz_B = dvdTwosEn;
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_0 (
+    .A    (HAD_DVD_TWOS_0_A   ), //i
+    .B    (HAD_DVD_TWOS_0_B   ), //i
+    .COUT (HAD_DVD_TWOS_0_COUT), //o
+    .SUM  (HAD_DVD_TWOS_0_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_1 (
-    .io_a (HAD_DVD_TWOS_1_io_a), //i
-    .io_b (HAD_DVD_TWOS_0_io_c), //i
-    .io_s (HAD_DVD_TWOS_1_io_s), //o
-    .io_c (HAD_DVD_TWOS_1_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_1 (
+    .A    (HAD_DVD_TWOS_1_A   ), //i
+    .B    (HAD_DVD_TWOS_0_COUT), //i
+    .COUT (HAD_DVD_TWOS_1_COUT), //o
+    .SUM  (HAD_DVD_TWOS_1_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_2 (
-    .io_a (HAD_DVD_TWOS_2_io_a), //i
-    .io_b (HAD_DVD_TWOS_1_io_c), //i
-    .io_s (HAD_DVD_TWOS_2_io_s), //o
-    .io_c (HAD_DVD_TWOS_2_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_2 (
+    .A    (HAD_DVD_TWOS_2_A   ), //i
+    .B    (HAD_DVD_TWOS_1_COUT), //i
+    .COUT (HAD_DVD_TWOS_2_COUT), //o
+    .SUM  (HAD_DVD_TWOS_2_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_3 (
-    .io_a (HAD_DVD_TWOS_3_io_a), //i
-    .io_b (HAD_DVD_TWOS_2_io_c), //i
-    .io_s (HAD_DVD_TWOS_3_io_s), //o
-    .io_c (HAD_DVD_TWOS_3_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_3 (
+    .A    (HAD_DVD_TWOS_3_A   ), //i
+    .B    (HAD_DVD_TWOS_2_COUT), //i
+    .COUT (HAD_DVD_TWOS_3_COUT), //o
+    .SUM  (HAD_DVD_TWOS_3_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_4 (
-    .io_a (HAD_DVD_TWOS_4_io_a), //i
-    .io_b (HAD_DVD_TWOS_3_io_c), //i
-    .io_s (HAD_DVD_TWOS_4_io_s), //o
-    .io_c (HAD_DVD_TWOS_4_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_4 (
+    .A    (HAD_DVD_TWOS_4_A   ), //i
+    .B    (HAD_DVD_TWOS_3_COUT), //i
+    .COUT (HAD_DVD_TWOS_4_COUT), //o
+    .SUM  (HAD_DVD_TWOS_4_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_5 (
-    .io_a (HAD_DVD_TWOS_5_io_a), //i
-    .io_b (HAD_DVD_TWOS_4_io_c), //i
-    .io_s (HAD_DVD_TWOS_5_io_s), //o
-    .io_c (HAD_DVD_TWOS_5_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_5 (
+    .A    (HAD_DVD_TWOS_5_A   ), //i
+    .B    (HAD_DVD_TWOS_4_COUT), //i
+    .COUT (HAD_DVD_TWOS_5_COUT), //o
+    .SUM  (HAD_DVD_TWOS_5_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_6 (
-    .io_a (HAD_DVD_TWOS_6_io_a), //i
-    .io_b (HAD_DVD_TWOS_5_io_c), //i
-    .io_s (HAD_DVD_TWOS_6_io_s), //o
-    .io_c (HAD_DVD_TWOS_6_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_6 (
+    .A    (HAD_DVD_TWOS_6_A   ), //i
+    .B    (HAD_DVD_TWOS_5_COUT), //i
+    .COUT (HAD_DVD_TWOS_6_COUT), //o
+    .SUM  (HAD_DVD_TWOS_6_SUM )  //o
   );
-  HA_24 HAD_DVD_TWOS_7 (
-    .io_a (HAD_DVD_TWOS_7_io_a), //i
-    .io_b (HAD_DVD_TWOS_6_io_c), //i
-    .io_s (HAD_DVD_TWOS_7_io_s), //o
-    .io_c (HAD_DVD_TWOS_7_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAD_DVD_TWOS_7 (
+    .A    (HAD_DVD_TWOS_7_A   ), //i
+    .B    (HAD_DVD_TWOS_6_COUT), //i
+    .COUT (HAD_DVD_TWOS_7_COUT), //o
+    .SUM  (HAD_DVD_TWOS_7_SUM )  //o
   );
-  DIVUNIT DU_Q0D0d8_EXT (
+  DIVUNITFA DU_Q0D0d8_EXT (
     .io_a   (DU_Q1D1d7_io_s     ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q0D0d7_io_c     ), //i
@@ -674,7 +674,7 @@ module Div (
     .io_s   (DU_Q0D0d8_EXT_io_s ), //o
     .io_c   (DU_Q0D0d8_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q0D0d9_EXT (
+  DIVUNITFA DU_Q0D0d9_EXT (
     .io_a   (DU_Q1D1d8_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q0D0d8_EXT_io_c ), //i
@@ -682,7 +682,7 @@ module Div (
     .io_s   (DU_Q0D0d9_EXT_io_s ), //o
     .io_c   (DU_Q0D0d9_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q0D0d10_EXT (
+  DIVUNITFA DU_Q0D0d10_EXT (
     .io_a   (DU_Q1D1d9_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q0D0d9_EXT_io_c ), //i
@@ -690,7 +690,7 @@ module Div (
     .io_s   (DU_Q0D0d10_EXT_io_s), //o
     .io_c   (DU_Q0D0d10_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q0D0d11_EXT (
+  DIVUNITFA DU_Q0D0d11_EXT (
     .io_a   (DU_Q1D1d10_EXT_io_s), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q0D0d10_EXT_io_c), //i
@@ -698,7 +698,7 @@ module Div (
     .io_s   (DU_Q0D0d11_EXT_io_s), //o
     .io_c   (DU_Q0D0d11_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q0D0d12_EXT (
+  DIVUNITFA DU_Q0D0d12_EXT (
     .io_a   (DU_Q1D1d11_EXT_io_s), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q0D0d11_EXT_io_c), //i
@@ -706,7 +706,7 @@ module Div (
     .io_s   (DU_Q0D0d12_EXT_io_s), //o
     .io_c   (DU_Q0D0d12_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q0D0d0 (
+  DIVUNITFA DU_Q0D0d0 (
     .io_a   (hadDvdTwosS_0      ), //i
     .io_b   (xorDvr_0           ), //i
     .io_y   (dvrTwosEnInverted  ), //i
@@ -714,7 +714,7 @@ module Div (
     .io_s   (DU_Q0D0d0_io_s     ), //o
     .io_c   (DU_Q0D0d0_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d1 (
+  DIVUNITFA DU_Q0D0d1 (
     .io_a   (DU_Q1D1d0_io_s     ), //i
     .io_b   (xorDvr_1           ), //i
     .io_y   (DU_Q0D0d0_io_c     ), //i
@@ -722,7 +722,7 @@ module Div (
     .io_s   (DU_Q0D0d1_io_s     ), //o
     .io_c   (DU_Q0D0d1_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d2 (
+  DIVUNITFA DU_Q0D0d2 (
     .io_a   (DU_Q1D1d1_io_s     ), //i
     .io_b   (xorDvr_2           ), //i
     .io_y   (DU_Q0D0d1_io_c     ), //i
@@ -730,7 +730,7 @@ module Div (
     .io_s   (DU_Q0D0d2_io_s     ), //o
     .io_c   (DU_Q0D0d2_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d3 (
+  DIVUNITFA DU_Q0D0d3 (
     .io_a   (DU_Q1D1d2_io_s     ), //i
     .io_b   (xorDvr_3           ), //i
     .io_y   (DU_Q0D0d2_io_c     ), //i
@@ -738,7 +738,7 @@ module Div (
     .io_s   (DU_Q0D0d3_io_s     ), //o
     .io_c   (DU_Q0D0d3_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d4 (
+  DIVUNITFA DU_Q0D0d4 (
     .io_a   (DU_Q1D1d3_io_s     ), //i
     .io_b   (xorDvr_4           ), //i
     .io_y   (DU_Q0D0d3_io_c     ), //i
@@ -746,7 +746,7 @@ module Div (
     .io_s   (DU_Q0D0d4_io_s     ), //o
     .io_c   (DU_Q0D0d4_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d5 (
+  DIVUNITFA DU_Q0D0d5 (
     .io_a   (DU_Q1D1d4_io_s     ), //i
     .io_b   (xorDvr_5           ), //i
     .io_y   (DU_Q0D0d4_io_c     ), //i
@@ -754,7 +754,7 @@ module Div (
     .io_s   (DU_Q0D0d5_io_s     ), //o
     .io_c   (DU_Q0D0d5_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d6 (
+  DIVUNITFA DU_Q0D0d6 (
     .io_a   (DU_Q1D1d5_io_s     ), //i
     .io_b   (xorDvr_6           ), //i
     .io_y   (DU_Q0D0d5_io_c     ), //i
@@ -762,7 +762,7 @@ module Div (
     .io_s   (DU_Q0D0d6_io_s     ), //o
     .io_c   (DU_Q0D0d6_io_c     )  //o
   );
-  DIVUNIT DU_Q0D0d7 (
+  DIVUNITFA DU_Q0D0d7 (
     .io_a   (DU_Q1D1d6_io_s     ), //i
     .io_b   (xorDvr_7           ), //i
     .io_y   (DU_Q0D0d6_io_c     ), //i
@@ -770,7 +770,7 @@ module Div (
     .io_s   (DU_Q0D0d7_io_s     ), //o
     .io_c   (DU_Q0D0d7_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d8_EXT (
+  DIVUNITFA DU_Q1D1d8_EXT (
     .io_a   (DU_Q2D2d7_io_s     ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q1D1d7_io_c     ), //i
@@ -778,7 +778,7 @@ module Div (
     .io_s   (DU_Q1D1d8_EXT_io_s ), //o
     .io_c   (DU_Q1D1d8_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q1D1d9_EXT (
+  DIVUNITFA DU_Q1D1d9_EXT (
     .io_a   (DU_Q2D2d8_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q1D1d8_EXT_io_c ), //i
@@ -786,7 +786,7 @@ module Div (
     .io_s   (DU_Q1D1d9_EXT_io_s ), //o
     .io_c   (DU_Q1D1d9_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q1D1d10_EXT (
+  DIVUNITFA DU_Q1D1d10_EXT (
     .io_a   (DU_Q2D2d9_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q1D1d9_EXT_io_c ), //i
@@ -794,7 +794,7 @@ module Div (
     .io_s   (DU_Q1D1d10_EXT_io_s), //o
     .io_c   (DU_Q1D1d10_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q1D1d11_EXT (
+  DIVUNITFA DU_Q1D1d11_EXT (
     .io_a   (DU_Q2D2d10_EXT_io_s), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q1D1d10_EXT_io_c), //i
@@ -802,7 +802,7 @@ module Div (
     .io_s   (DU_Q1D1d11_EXT_io_s), //o
     .io_c   (DU_Q1D1d11_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q1D1d12_EXT (
+  DIVUNITFA DU_Q1D1d12_EXT (
     .io_a   (DU_Q2D2d11_EXT_io_s), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q1D1d11_EXT_io_c), //i
@@ -810,7 +810,7 @@ module Div (
     .io_s   (DU_Q1D1d12_EXT_io_s), //o
     .io_c   (DU_Q1D1d12_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q1D1d0 (
+  DIVUNITFA DU_Q1D1d0 (
     .io_a   (hadDvdTwosS_1      ), //i
     .io_b   (xorDvr_0           ), //i
     .io_y   (dvrTwosEnInverted  ), //i
@@ -818,7 +818,7 @@ module Div (
     .io_s   (DU_Q1D1d0_io_s     ), //o
     .io_c   (DU_Q1D1d0_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d1 (
+  DIVUNITFA DU_Q1D1d1 (
     .io_a   (DU_Q2D2d0_io_s     ), //i
     .io_b   (xorDvr_1           ), //i
     .io_y   (DU_Q1D1d0_io_c     ), //i
@@ -826,7 +826,7 @@ module Div (
     .io_s   (DU_Q1D1d1_io_s     ), //o
     .io_c   (DU_Q1D1d1_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d2 (
+  DIVUNITFA DU_Q1D1d2 (
     .io_a   (DU_Q2D2d1_io_s     ), //i
     .io_b   (xorDvr_2           ), //i
     .io_y   (DU_Q1D1d1_io_c     ), //i
@@ -834,7 +834,7 @@ module Div (
     .io_s   (DU_Q1D1d2_io_s     ), //o
     .io_c   (DU_Q1D1d2_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d3 (
+  DIVUNITFA DU_Q1D1d3 (
     .io_a   (DU_Q2D2d2_io_s     ), //i
     .io_b   (xorDvr_3           ), //i
     .io_y   (DU_Q1D1d2_io_c     ), //i
@@ -842,7 +842,7 @@ module Div (
     .io_s   (DU_Q1D1d3_io_s     ), //o
     .io_c   (DU_Q1D1d3_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d4 (
+  DIVUNITFA DU_Q1D1d4 (
     .io_a   (DU_Q2D2d3_io_s     ), //i
     .io_b   (xorDvr_4           ), //i
     .io_y   (DU_Q1D1d3_io_c     ), //i
@@ -850,7 +850,7 @@ module Div (
     .io_s   (DU_Q1D1d4_io_s     ), //o
     .io_c   (DU_Q1D1d4_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d5 (
+  DIVUNITFA DU_Q1D1d5 (
     .io_a   (DU_Q2D2d4_io_s     ), //i
     .io_b   (xorDvr_5           ), //i
     .io_y   (DU_Q1D1d4_io_c     ), //i
@@ -858,7 +858,7 @@ module Div (
     .io_s   (DU_Q1D1d5_io_s     ), //o
     .io_c   (DU_Q1D1d5_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d6 (
+  DIVUNITFA DU_Q1D1d6 (
     .io_a   (DU_Q2D2d5_io_s     ), //i
     .io_b   (xorDvr_6           ), //i
     .io_y   (DU_Q1D1d5_io_c     ), //i
@@ -866,7 +866,7 @@ module Div (
     .io_s   (DU_Q1D1d6_io_s     ), //o
     .io_c   (DU_Q1D1d6_io_c     )  //o
   );
-  DIVUNIT DU_Q1D1d7 (
+  DIVUNITFA DU_Q1D1d7 (
     .io_a   (DU_Q2D2d6_io_s     ), //i
     .io_b   (xorDvr_7           ), //i
     .io_y   (DU_Q1D1d6_io_c     ), //i
@@ -874,7 +874,7 @@ module Div (
     .io_s   (DU_Q1D1d7_io_s     ), //o
     .io_c   (DU_Q1D1d7_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d8_EXT (
+  DIVUNITFA DU_Q2D2d8_EXT (
     .io_a   (DU_Q3D3d7_io_s     ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q2D2d7_io_c     ), //i
@@ -882,7 +882,7 @@ module Div (
     .io_s   (DU_Q2D2d8_EXT_io_s ), //o
     .io_c   (DU_Q2D2d8_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q2D2d9_EXT (
+  DIVUNITFA DU_Q2D2d9_EXT (
     .io_a   (DU_Q3D3d8_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q2D2d8_EXT_io_c ), //i
@@ -890,7 +890,7 @@ module Div (
     .io_s   (DU_Q2D2d9_EXT_io_s ), //o
     .io_c   (DU_Q2D2d9_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q2D2d10_EXT (
+  DIVUNITFA DU_Q2D2d10_EXT (
     .io_a   (DU_Q3D3d9_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q2D2d9_EXT_io_c ), //i
@@ -898,7 +898,7 @@ module Div (
     .io_s   (DU_Q2D2d10_EXT_io_s), //o
     .io_c   (DU_Q2D2d10_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q2D2d11_EXT (
+  DIVUNITFA DU_Q2D2d11_EXT (
     .io_a   (DU_Q3D3d10_EXT_io_s), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q2D2d10_EXT_io_c), //i
@@ -906,7 +906,7 @@ module Div (
     .io_s   (DU_Q2D2d11_EXT_io_s), //o
     .io_c   (DU_Q2D2d11_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q2D2d0 (
+  DIVUNITFA DU_Q2D2d0 (
     .io_a   (hadDvdTwosS_2      ), //i
     .io_b   (xorDvr_0           ), //i
     .io_y   (dvrTwosEnInverted  ), //i
@@ -914,7 +914,7 @@ module Div (
     .io_s   (DU_Q2D2d0_io_s     ), //o
     .io_c   (DU_Q2D2d0_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d1 (
+  DIVUNITFA DU_Q2D2d1 (
     .io_a   (DU_Q3D3d0_io_s     ), //i
     .io_b   (xorDvr_1           ), //i
     .io_y   (DU_Q2D2d0_io_c     ), //i
@@ -922,7 +922,7 @@ module Div (
     .io_s   (DU_Q2D2d1_io_s     ), //o
     .io_c   (DU_Q2D2d1_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d2 (
+  DIVUNITFA DU_Q2D2d2 (
     .io_a   (DU_Q3D3d1_io_s     ), //i
     .io_b   (xorDvr_2           ), //i
     .io_y   (DU_Q2D2d1_io_c     ), //i
@@ -930,7 +930,7 @@ module Div (
     .io_s   (DU_Q2D2d2_io_s     ), //o
     .io_c   (DU_Q2D2d2_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d3 (
+  DIVUNITFA DU_Q2D2d3 (
     .io_a   (DU_Q3D3d2_io_s     ), //i
     .io_b   (xorDvr_3           ), //i
     .io_y   (DU_Q2D2d2_io_c     ), //i
@@ -938,7 +938,7 @@ module Div (
     .io_s   (DU_Q2D2d3_io_s     ), //o
     .io_c   (DU_Q2D2d3_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d4 (
+  DIVUNITFA DU_Q2D2d4 (
     .io_a   (DU_Q3D3d3_io_s     ), //i
     .io_b   (xorDvr_4           ), //i
     .io_y   (DU_Q2D2d3_io_c     ), //i
@@ -946,7 +946,7 @@ module Div (
     .io_s   (DU_Q2D2d4_io_s     ), //o
     .io_c   (DU_Q2D2d4_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d5 (
+  DIVUNITFA DU_Q2D2d5 (
     .io_a   (DU_Q3D3d4_io_s     ), //i
     .io_b   (xorDvr_5           ), //i
     .io_y   (DU_Q2D2d4_io_c     ), //i
@@ -954,7 +954,7 @@ module Div (
     .io_s   (DU_Q2D2d5_io_s     ), //o
     .io_c   (DU_Q2D2d5_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d6 (
+  DIVUNITFA DU_Q2D2d6 (
     .io_a   (DU_Q3D3d5_io_s     ), //i
     .io_b   (xorDvr_6           ), //i
     .io_y   (DU_Q2D2d5_io_c     ), //i
@@ -962,7 +962,7 @@ module Div (
     .io_s   (DU_Q2D2d6_io_s     ), //o
     .io_c   (DU_Q2D2d6_io_c     )  //o
   );
-  DIVUNIT DU_Q2D2d7 (
+  DIVUNITFA DU_Q2D2d7 (
     .io_a   (DU_Q3D3d6_io_s     ), //i
     .io_b   (xorDvr_7           ), //i
     .io_y   (DU_Q2D2d6_io_c     ), //i
@@ -970,7 +970,7 @@ module Div (
     .io_s   (DU_Q2D2d7_io_s     ), //o
     .io_c   (DU_Q2D2d7_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d8_EXT (
+  DIVUNITFA DU_Q3D3d8_EXT (
     .io_a   (DU_Q4D4d7_io_s     ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q3D3d7_io_c     ), //i
@@ -978,7 +978,7 @@ module Div (
     .io_s   (DU_Q3D3d8_EXT_io_s ), //o
     .io_c   (DU_Q3D3d8_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q3D3d9_EXT (
+  DIVUNITFA DU_Q3D3d9_EXT (
     .io_a   (DU_Q4D4d8_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q3D3d8_EXT_io_c ), //i
@@ -986,7 +986,7 @@ module Div (
     .io_s   (DU_Q3D3d9_EXT_io_s ), //o
     .io_c   (DU_Q3D3d9_EXT_io_c )  //o
   );
-  DIVUNIT DU_Q3D3d10_EXT (
+  DIVUNITFA DU_Q3D3d10_EXT (
     .io_a   (DU_Q4D4d9_EXT_io_s ), //i
     .io_b   (1'b1               ), //i
     .io_y   (DU_Q3D3d9_EXT_io_c ), //i
@@ -994,7 +994,7 @@ module Div (
     .io_s   (DU_Q3D3d10_EXT_io_s), //o
     .io_c   (DU_Q3D3d10_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q3D3d0 (
+  DIVUNITFA DU_Q3D3d0 (
     .io_a   (hadDvdTwosS_3      ), //i
     .io_b   (xorDvr_0           ), //i
     .io_y   (dvrTwosEnInverted  ), //i
@@ -1002,7 +1002,7 @@ module Div (
     .io_s   (DU_Q3D3d0_io_s     ), //o
     .io_c   (DU_Q3D3d0_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d1 (
+  DIVUNITFA DU_Q3D3d1 (
     .io_a   (DU_Q4D4d0_io_s     ), //i
     .io_b   (xorDvr_1           ), //i
     .io_y   (DU_Q3D3d0_io_c     ), //i
@@ -1010,7 +1010,7 @@ module Div (
     .io_s   (DU_Q3D3d1_io_s     ), //o
     .io_c   (DU_Q3D3d1_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d2 (
+  DIVUNITFA DU_Q3D3d2 (
     .io_a   (DU_Q4D4d1_io_s     ), //i
     .io_b   (xorDvr_2           ), //i
     .io_y   (DU_Q3D3d1_io_c     ), //i
@@ -1018,7 +1018,7 @@ module Div (
     .io_s   (DU_Q3D3d2_io_s     ), //o
     .io_c   (DU_Q3D3d2_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d3 (
+  DIVUNITFA DU_Q3D3d3 (
     .io_a   (DU_Q4D4d2_io_s     ), //i
     .io_b   (xorDvr_3           ), //i
     .io_y   (DU_Q3D3d2_io_c     ), //i
@@ -1026,7 +1026,7 @@ module Div (
     .io_s   (DU_Q3D3d3_io_s     ), //o
     .io_c   (DU_Q3D3d3_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d4 (
+  DIVUNITFA DU_Q3D3d4 (
     .io_a   (DU_Q4D4d3_io_s     ), //i
     .io_b   (xorDvr_4           ), //i
     .io_y   (DU_Q3D3d3_io_c     ), //i
@@ -1034,7 +1034,7 @@ module Div (
     .io_s   (DU_Q3D3d4_io_s     ), //o
     .io_c   (DU_Q3D3d4_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d5 (
+  DIVUNITFA DU_Q3D3d5 (
     .io_a   (DU_Q4D4d4_io_s     ), //i
     .io_b   (xorDvr_5           ), //i
     .io_y   (DU_Q3D3d4_io_c     ), //i
@@ -1042,7 +1042,7 @@ module Div (
     .io_s   (DU_Q3D3d5_io_s     ), //o
     .io_c   (DU_Q3D3d5_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d6 (
+  DIVUNITFA DU_Q3D3d6 (
     .io_a   (DU_Q4D4d5_io_s     ), //i
     .io_b   (xorDvr_6           ), //i
     .io_y   (DU_Q3D3d5_io_c     ), //i
@@ -1050,7 +1050,7 @@ module Div (
     .io_s   (DU_Q3D3d6_io_s     ), //o
     .io_c   (DU_Q3D3d6_io_c     )  //o
   );
-  DIVUNIT DU_Q3D3d7 (
+  DIVUNITFA DU_Q3D3d7 (
     .io_a   (DU_Q4D4d6_io_s     ), //i
     .io_b   (xorDvr_7           ), //i
     .io_y   (DU_Q3D3d6_io_c     ), //i
@@ -1058,7 +1058,7 @@ module Div (
     .io_s   (DU_Q3D3d7_io_s     ), //o
     .io_c   (DU_Q3D3d7_io_c     )  //o
   );
-  DIVUNIT DU_Q4D4d8_EXT (
+  DIVUNITFA DU_Q4D4d8_EXT (
     .io_a   (DU_Q5D5d7_io_s    ), //i
     .io_b   (1'b1              ), //i
     .io_y   (DU_Q4D4d7_io_c    ), //i
@@ -1066,7 +1066,7 @@ module Div (
     .io_s   (DU_Q4D4d8_EXT_io_s), //o
     .io_c   (DU_Q4D4d8_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q4D4d9_EXT (
+  DIVUNITFA DU_Q4D4d9_EXT (
     .io_a   (DU_Q5D5d8_EXT_io_s), //i
     .io_b   (1'b1              ), //i
     .io_y   (DU_Q4D4d8_EXT_io_c), //i
@@ -1074,7 +1074,7 @@ module Div (
     .io_s   (DU_Q4D4d9_EXT_io_s), //o
     .io_c   (DU_Q4D4d9_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q4D4d0 (
+  DIVUNITFA DU_Q4D4d0 (
     .io_a   (hadDvdTwosS_4     ), //i
     .io_b   (xorDvr_0          ), //i
     .io_y   (dvrTwosEnInverted ), //i
@@ -1082,7 +1082,7 @@ module Div (
     .io_s   (DU_Q4D4d0_io_s    ), //o
     .io_c   (DU_Q4D4d0_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d1 (
+  DIVUNITFA DU_Q4D4d1 (
     .io_a   (DU_Q5D5d0_io_s    ), //i
     .io_b   (xorDvr_1          ), //i
     .io_y   (DU_Q4D4d0_io_c    ), //i
@@ -1090,7 +1090,7 @@ module Div (
     .io_s   (DU_Q4D4d1_io_s    ), //o
     .io_c   (DU_Q4D4d1_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d2 (
+  DIVUNITFA DU_Q4D4d2 (
     .io_a   (DU_Q5D5d1_io_s    ), //i
     .io_b   (xorDvr_2          ), //i
     .io_y   (DU_Q4D4d1_io_c    ), //i
@@ -1098,7 +1098,7 @@ module Div (
     .io_s   (DU_Q4D4d2_io_s    ), //o
     .io_c   (DU_Q4D4d2_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d3 (
+  DIVUNITFA DU_Q4D4d3 (
     .io_a   (DU_Q5D5d2_io_s    ), //i
     .io_b   (xorDvr_3          ), //i
     .io_y   (DU_Q4D4d2_io_c    ), //i
@@ -1106,7 +1106,7 @@ module Div (
     .io_s   (DU_Q4D4d3_io_s    ), //o
     .io_c   (DU_Q4D4d3_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d4 (
+  DIVUNITFA DU_Q4D4d4 (
     .io_a   (DU_Q5D5d3_io_s    ), //i
     .io_b   (xorDvr_4          ), //i
     .io_y   (DU_Q4D4d3_io_c    ), //i
@@ -1114,7 +1114,7 @@ module Div (
     .io_s   (DU_Q4D4d4_io_s    ), //o
     .io_c   (DU_Q4D4d4_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d5 (
+  DIVUNITFA DU_Q4D4d5 (
     .io_a   (DU_Q5D5d4_io_s    ), //i
     .io_b   (xorDvr_5          ), //i
     .io_y   (DU_Q4D4d4_io_c    ), //i
@@ -1122,7 +1122,7 @@ module Div (
     .io_s   (DU_Q4D4d5_io_s    ), //o
     .io_c   (DU_Q4D4d5_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d6 (
+  DIVUNITFA DU_Q4D4d6 (
     .io_a   (DU_Q5D5d5_io_s    ), //i
     .io_b   (xorDvr_6          ), //i
     .io_y   (DU_Q4D4d5_io_c    ), //i
@@ -1130,7 +1130,7 @@ module Div (
     .io_s   (DU_Q4D4d6_io_s    ), //o
     .io_c   (DU_Q4D4d6_io_c    )  //o
   );
-  DIVUNIT DU_Q4D4d7 (
+  DIVUNITFA DU_Q4D4d7 (
     .io_a   (DU_Q5D5d6_io_s    ), //i
     .io_b   (xorDvr_7          ), //i
     .io_y   (DU_Q4D4d6_io_c    ), //i
@@ -1138,7 +1138,7 @@ module Div (
     .io_s   (DU_Q4D4d7_io_s    ), //o
     .io_c   (DU_Q4D4d7_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d8_EXT (
+  DIVUNITFA DU_Q5D5d8_EXT (
     .io_a   (DU_Q6D6d7_io_s    ), //i
     .io_b   (1'b1              ), //i
     .io_y   (DU_Q5D5d7_io_c    ), //i
@@ -1146,7 +1146,7 @@ module Div (
     .io_s   (DU_Q5D5d8_EXT_io_s), //o
     .io_c   (DU_Q5D5d8_EXT_io_c)  //o
   );
-  DIVUNIT DU_Q5D5d0 (
+  DIVUNITFA DU_Q5D5d0 (
     .io_a   (hadDvdTwosS_5     ), //i
     .io_b   (xorDvr_0          ), //i
     .io_y   (dvrTwosEnInverted ), //i
@@ -1154,7 +1154,7 @@ module Div (
     .io_s   (DU_Q5D5d0_io_s    ), //o
     .io_c   (DU_Q5D5d0_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d1 (
+  DIVUNITFA DU_Q5D5d1 (
     .io_a   (DU_Q6D6d0_io_s    ), //i
     .io_b   (xorDvr_1          ), //i
     .io_y   (DU_Q5D5d0_io_c    ), //i
@@ -1162,7 +1162,7 @@ module Div (
     .io_s   (DU_Q5D5d1_io_s    ), //o
     .io_c   (DU_Q5D5d1_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d2 (
+  DIVUNITFA DU_Q5D5d2 (
     .io_a   (DU_Q6D6d1_io_s    ), //i
     .io_b   (xorDvr_2          ), //i
     .io_y   (DU_Q5D5d1_io_c    ), //i
@@ -1170,7 +1170,7 @@ module Div (
     .io_s   (DU_Q5D5d2_io_s    ), //o
     .io_c   (DU_Q5D5d2_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d3 (
+  DIVUNITFA DU_Q5D5d3 (
     .io_a   (DU_Q6D6d2_io_s    ), //i
     .io_b   (xorDvr_3          ), //i
     .io_y   (DU_Q5D5d2_io_c    ), //i
@@ -1178,7 +1178,7 @@ module Div (
     .io_s   (DU_Q5D5d3_io_s    ), //o
     .io_c   (DU_Q5D5d3_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d4 (
+  DIVUNITFA DU_Q5D5d4 (
     .io_a   (DU_Q6D6d3_io_s    ), //i
     .io_b   (xorDvr_4          ), //i
     .io_y   (DU_Q5D5d3_io_c    ), //i
@@ -1186,7 +1186,7 @@ module Div (
     .io_s   (DU_Q5D5d4_io_s    ), //o
     .io_c   (DU_Q5D5d4_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d5 (
+  DIVUNITFA DU_Q5D5d5 (
     .io_a   (DU_Q6D6d4_io_s    ), //i
     .io_b   (xorDvr_5          ), //i
     .io_y   (DU_Q5D5d4_io_c    ), //i
@@ -1194,7 +1194,7 @@ module Div (
     .io_s   (DU_Q5D5d5_io_s    ), //o
     .io_c   (DU_Q5D5d5_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d6 (
+  DIVUNITFA DU_Q5D5d6 (
     .io_a   (DU_Q6D6d5_io_s    ), //i
     .io_b   (xorDvr_6          ), //i
     .io_y   (DU_Q5D5d5_io_c    ), //i
@@ -1202,7 +1202,7 @@ module Div (
     .io_s   (DU_Q5D5d6_io_s    ), //o
     .io_c   (DU_Q5D5d6_io_c    )  //o
   );
-  DIVUNIT DU_Q5D5d7 (
+  DIVUNITFA DU_Q5D5d7 (
     .io_a   (DU_Q6D6d6_io_s    ), //i
     .io_b   (xorDvr_7          ), //i
     .io_y   (DU_Q5D5d6_io_c    ), //i
@@ -1210,7 +1210,7 @@ module Div (
     .io_s   (DU_Q5D5d7_io_s    ), //o
     .io_c   (DU_Q5D5d7_io_c    )  //o
   );
-  DIVUNIT DU_Q6D6d0 (
+  DIVUNITFA DU_Q6D6d0 (
     .io_a   (hadDvdTwosS_6    ), //i
     .io_b   (xorDvr_0         ), //i
     .io_y   (dvrTwosEnInverted), //i
@@ -1218,7 +1218,7 @@ module Div (
     .io_s   (DU_Q6D6d0_io_s   ), //o
     .io_c   (DU_Q6D6d0_io_c   )  //o
   );
-  DIVUNIT DU_Q6D6d1 (
+  DIVUNITFA DU_Q6D6d1 (
     .io_a   (DU_Q7D7d0_io_s), //i
     .io_b   (xorDvr_1      ), //i
     .io_y   (DU_Q6D6d0_io_c), //i
@@ -1226,7 +1226,7 @@ module Div (
     .io_s   (DU_Q6D6d1_io_s), //o
     .io_c   (DU_Q6D6d1_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d2 (
+  DIVUNITFA DU_Q6D6d2 (
     .io_a   (DU_Q7D7d1_io_s), //i
     .io_b   (xorDvr_2      ), //i
     .io_y   (DU_Q6D6d1_io_c), //i
@@ -1234,7 +1234,7 @@ module Div (
     .io_s   (DU_Q6D6d2_io_s), //o
     .io_c   (DU_Q6D6d2_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d3 (
+  DIVUNITFA DU_Q6D6d3 (
     .io_a   (DU_Q7D7d2_io_s), //i
     .io_b   (xorDvr_3      ), //i
     .io_y   (DU_Q6D6d2_io_c), //i
@@ -1242,7 +1242,7 @@ module Div (
     .io_s   (DU_Q6D6d3_io_s), //o
     .io_c   (DU_Q6D6d3_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d4 (
+  DIVUNITFA DU_Q6D6d4 (
     .io_a   (DU_Q7D7d3_io_s), //i
     .io_b   (xorDvr_4      ), //i
     .io_y   (DU_Q6D6d3_io_c), //i
@@ -1250,7 +1250,7 @@ module Div (
     .io_s   (DU_Q6D6d4_io_s), //o
     .io_c   (DU_Q6D6d4_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d5 (
+  DIVUNITFA DU_Q6D6d5 (
     .io_a   (DU_Q7D7d4_io_s), //i
     .io_b   (xorDvr_5      ), //i
     .io_y   (DU_Q6D6d4_io_c), //i
@@ -1258,7 +1258,7 @@ module Div (
     .io_s   (DU_Q6D6d5_io_s), //o
     .io_c   (DU_Q6D6d5_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d6 (
+  DIVUNITFA DU_Q6D6d6 (
     .io_a   (DU_Q7D7d5_io_s), //i
     .io_b   (xorDvr_6      ), //i
     .io_y   (DU_Q6D6d5_io_c), //i
@@ -1266,7 +1266,7 @@ module Div (
     .io_s   (DU_Q6D6d6_io_s), //o
     .io_c   (DU_Q6D6d6_io_c)  //o
   );
-  DIVUNIT DU_Q6D6d7 (
+  DIVUNITFA DU_Q6D6d7 (
     .io_a   (DU_Q7D7d6_io_s), //i
     .io_b   (xorDvr_7      ), //i
     .io_y   (DU_Q6D6d6_io_c), //i
@@ -1274,7 +1274,7 @@ module Div (
     .io_s   (DU_Q6D6d7_io_s), //o
     .io_c   (DU_Q6D6d7_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d0 (
+  DIVUNITFA DU_Q7D7d0 (
     .io_a   (hadDvdTwosS_7    ), //i
     .io_b   (xorDvr_0         ), //i
     .io_y   (dvrTwosEnInverted), //i
@@ -1282,7 +1282,7 @@ module Div (
     .io_s   (DU_Q7D7d0_io_s   ), //o
     .io_c   (DU_Q7D7d0_io_c   )  //o
   );
-  DIVUNIT DU_Q7D7d1 (
+  DIVUNITFA DU_Q7D7d1 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_1      ), //i
     .io_y   (DU_Q7D7d0_io_c), //i
@@ -1290,7 +1290,7 @@ module Div (
     .io_s   (DU_Q7D7d1_io_s), //o
     .io_c   (DU_Q7D7d1_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d2 (
+  DIVUNITFA DU_Q7D7d2 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_2      ), //i
     .io_y   (DU_Q7D7d1_io_c), //i
@@ -1298,7 +1298,7 @@ module Div (
     .io_s   (DU_Q7D7d2_io_s), //o
     .io_c   (DU_Q7D7d2_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d3 (
+  DIVUNITFA DU_Q7D7d3 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_3      ), //i
     .io_y   (DU_Q7D7d2_io_c), //i
@@ -1306,7 +1306,7 @@ module Div (
     .io_s   (DU_Q7D7d3_io_s), //o
     .io_c   (DU_Q7D7d3_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d4 (
+  DIVUNITFA DU_Q7D7d4 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_4      ), //i
     .io_y   (DU_Q7D7d3_io_c), //i
@@ -1314,7 +1314,7 @@ module Div (
     .io_s   (DU_Q7D7d4_io_s), //o
     .io_c   (DU_Q7D7d4_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d5 (
+  DIVUNITFA DU_Q7D7d5 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_5      ), //i
     .io_y   (DU_Q7D7d4_io_c), //i
@@ -1322,7 +1322,7 @@ module Div (
     .io_s   (DU_Q7D7d5_io_s), //o
     .io_c   (DU_Q7D7d5_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d6 (
+  DIVUNITFA DU_Q7D7d6 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_6      ), //i
     .io_y   (DU_Q7D7d5_io_c), //i
@@ -1330,7 +1330,7 @@ module Div (
     .io_s   (DU_Q7D7d6_io_s), //o
     .io_c   (DU_Q7D7d6_io_c)  //o
   );
-  DIVUNIT DU_Q7D7d7 (
+  DIVUNITFA DU_Q7D7d7 (
     .io_a   (1'b0          ), //i
     .io_b   (xorDvr_7      ), //i
     .io_y   (DU_Q7D7d6_io_c), //i
@@ -1338,124 +1338,124 @@ module Div (
     .io_s   (DU_Q7D7d7_io_s), //o
     .io_c   (DU_Q7D7d7_io_c)  //o
   );
-  HA_24 HAR0_SIGN (
-    .io_a (HAR0_SIGN_io_a), //i
-    .io_b (dvdTwosEn     ), //i
-    .io_s (HAR0_SIGN_io_s), //o
-    .io_c (HAR0_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR0_SIGN (
+    .A    (HAR0_SIGN_A   ), //i
+    .B    (dvdTwosEn     ), //i
+    .COUT (HAR0_SIGN_COUT), //o
+    .SUM  (HAR0_SIGN_SUM )  //o
   );
-  HA_24 HAR1_SIGN (
-    .io_a (HAR1_SIGN_io_a), //i
-    .io_b (HAR0_SIGN_io_c), //i
-    .io_s (HAR1_SIGN_io_s), //o
-    .io_c (HAR1_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR1_SIGN (
+    .A    (HAR1_SIGN_A   ), //i
+    .B    (HAR0_SIGN_COUT), //i
+    .COUT (HAR1_SIGN_COUT), //o
+    .SUM  (HAR1_SIGN_SUM )  //o
   );
-  HA_24 HAR2_SIGN (
-    .io_a (HAR2_SIGN_io_a), //i
-    .io_b (HAR1_SIGN_io_c), //i
-    .io_s (HAR2_SIGN_io_s), //o
-    .io_c (HAR2_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR2_SIGN (
+    .A    (HAR2_SIGN_A   ), //i
+    .B    (HAR1_SIGN_COUT), //i
+    .COUT (HAR2_SIGN_COUT), //o
+    .SUM  (HAR2_SIGN_SUM )  //o
   );
-  HA_24 HAR3_SIGN (
-    .io_a (HAR3_SIGN_io_a), //i
-    .io_b (HAR2_SIGN_io_c), //i
-    .io_s (HAR3_SIGN_io_s), //o
-    .io_c (HAR3_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR3_SIGN (
+    .A    (HAR3_SIGN_A   ), //i
+    .B    (HAR2_SIGN_COUT), //i
+    .COUT (HAR3_SIGN_COUT), //o
+    .SUM  (HAR3_SIGN_SUM )  //o
   );
-  HA_24 HAR4_SIGN (
-    .io_a (HAR4_SIGN_io_a), //i
-    .io_b (HAR3_SIGN_io_c), //i
-    .io_s (HAR4_SIGN_io_s), //o
-    .io_c (HAR4_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR4_SIGN (
+    .A    (HAR4_SIGN_A   ), //i
+    .B    (HAR3_SIGN_COUT), //i
+    .COUT (HAR4_SIGN_COUT), //o
+    .SUM  (HAR4_SIGN_SUM )  //o
   );
-  HA_24 HAR5_SIGN (
-    .io_a (HAR5_SIGN_io_a), //i
-    .io_b (HAR4_SIGN_io_c), //i
-    .io_s (HAR5_SIGN_io_s), //o
-    .io_c (HAR5_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR5_SIGN (
+    .A    (HAR5_SIGN_A   ), //i
+    .B    (HAR4_SIGN_COUT), //i
+    .COUT (HAR5_SIGN_COUT), //o
+    .SUM  (HAR5_SIGN_SUM )  //o
   );
-  HA_24 HAR6_SIGN (
-    .io_a (HAR6_SIGN_io_a), //i
-    .io_b (HAR5_SIGN_io_c), //i
-    .io_s (HAR6_SIGN_io_s), //o
-    .io_c (HAR6_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR6_SIGN (
+    .A    (HAR6_SIGN_A   ), //i
+    .B    (HAR5_SIGN_COUT), //i
+    .COUT (HAR6_SIGN_COUT), //o
+    .SUM  (HAR6_SIGN_SUM )  //o
   );
-  HA_24 HAR7_SIGN (
-    .io_a (HAR7_SIGN_io_a), //i
-    .io_b (HAR6_SIGN_io_c), //i
-    .io_s (HAR7_SIGN_io_s), //o
-    .io_c (HAR7_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAR7_SIGN (
+    .A    (HAR7_SIGN_A   ), //i
+    .B    (HAR6_SIGN_COUT), //i
+    .COUT (HAR7_SIGN_COUT), //o
+    .SUM  (HAR7_SIGN_SUM )  //o
   );
-  HA_24 HAQ0_SIGN (
-    .io_a (HAQ0_SIGN_io_a), //i
-    .io_b (qSign         ), //i
-    .io_s (HAQ0_SIGN_io_s), //o
-    .io_c (HAQ0_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ0_SIGN (
+    .A    (HAQ0_SIGN_A   ), //i
+    .B    (qSign         ), //i
+    .COUT (HAQ0_SIGN_COUT), //o
+    .SUM  (HAQ0_SIGN_SUM )  //o
   );
-  HA_24 HAQ1_SIGN (
-    .io_a (HAQ1_SIGN_io_a), //i
-    .io_b (HAQ0_SIGN_io_c), //i
-    .io_s (HAQ1_SIGN_io_s), //o
-    .io_c (HAQ1_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ1_SIGN (
+    .A    (HAQ1_SIGN_A   ), //i
+    .B    (HAQ0_SIGN_COUT), //i
+    .COUT (HAQ1_SIGN_COUT), //o
+    .SUM  (HAQ1_SIGN_SUM )  //o
   );
-  HA_24 HAQ2_SIGN (
-    .io_a (HAQ2_SIGN_io_a), //i
-    .io_b (HAQ1_SIGN_io_c), //i
-    .io_s (HAQ2_SIGN_io_s), //o
-    .io_c (HAQ2_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ2_SIGN (
+    .A    (HAQ2_SIGN_A   ), //i
+    .B    (HAQ1_SIGN_COUT), //i
+    .COUT (HAQ2_SIGN_COUT), //o
+    .SUM  (HAQ2_SIGN_SUM )  //o
   );
-  HA_24 HAQ3_SIGN (
-    .io_a (HAQ3_SIGN_io_a), //i
-    .io_b (HAQ2_SIGN_io_c), //i
-    .io_s (HAQ3_SIGN_io_s), //o
-    .io_c (HAQ3_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ3_SIGN (
+    .A    (HAQ3_SIGN_A   ), //i
+    .B    (HAQ2_SIGN_COUT), //i
+    .COUT (HAQ3_SIGN_COUT), //o
+    .SUM  (HAQ3_SIGN_SUM )  //o
   );
-  HA_24 HAQ4_SIGN (
-    .io_a (HAQ4_SIGN_io_a), //i
-    .io_b (HAQ3_SIGN_io_c), //i
-    .io_s (HAQ4_SIGN_io_s), //o
-    .io_c (HAQ4_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ4_SIGN (
+    .A    (HAQ4_SIGN_A   ), //i
+    .B    (HAQ3_SIGN_COUT), //i
+    .COUT (HAQ4_SIGN_COUT), //o
+    .SUM  (HAQ4_SIGN_SUM )  //o
   );
-  HA_24 HAQ5_SIGN (
-    .io_a (HAQ5_SIGN_io_a), //i
-    .io_b (HAQ4_SIGN_io_c), //i
-    .io_s (HAQ5_SIGN_io_s), //o
-    .io_c (HAQ5_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ5_SIGN (
+    .A    (HAQ5_SIGN_A   ), //i
+    .B    (HAQ4_SIGN_COUT), //i
+    .COUT (HAQ5_SIGN_COUT), //o
+    .SUM  (HAQ5_SIGN_SUM )  //o
   );
-  HA_24 HAQ6_SIGN (
-    .io_a (HAQ6_SIGN_io_a), //i
-    .io_b (HAQ5_SIGN_io_c), //i
-    .io_s (HAQ6_SIGN_io_s), //o
-    .io_c (HAQ6_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ6_SIGN (
+    .A    (HAQ6_SIGN_A   ), //i
+    .B    (HAQ5_SIGN_COUT), //i
+    .COUT (HAQ6_SIGN_COUT), //o
+    .SUM  (HAQ6_SIGN_SUM )  //o
   );
-  HA_24 HAQ7_SIGN (
-    .io_a (HAQ7_SIGN_io_a), //i
-    .io_b (HAQ6_SIGN_io_c), //i
-    .io_s (HAQ7_SIGN_io_s), //o
-    .io_c (HAQ7_SIGN_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HAQ7_SIGN (
+    .A    (HAQ7_SIGN_A   ), //i
+    .B    (HAQ6_SIGN_COUT), //i
+    .COUT (HAQ7_SIGN_COUT), //o
+    .SUM  (HAQ7_SIGN_SUM )  //o
   );
   assign isZero = (! (|io_dsor));
   assign dvdTwosEn = (io_opsigned && io_dend[7]);
   assign dvrTwosEn = (io_opsigned && io_dsor[7]);
   assign dvrTwosEnInverted = (! dvrTwosEn);
   assign qSign = (dvdTwosEn ^ dvrTwosEn);
-  assign HAD_DVD_TWOS_0_io_a = (io_dend[0] ^ dvdTwosEn);
-  assign HAD_DVD_TWOS_0_io_b = _zz_io_b[0];
-  assign hadDvdTwosS_0 = HAD_DVD_TWOS_0_io_s;
-  assign HAD_DVD_TWOS_1_io_a = (io_dend[1] ^ dvdTwosEn);
-  assign hadDvdTwosS_1 = HAD_DVD_TWOS_1_io_s;
-  assign HAD_DVD_TWOS_2_io_a = (io_dend[2] ^ dvdTwosEn);
-  assign hadDvdTwosS_2 = HAD_DVD_TWOS_2_io_s;
-  assign HAD_DVD_TWOS_3_io_a = (io_dend[3] ^ dvdTwosEn);
-  assign hadDvdTwosS_3 = HAD_DVD_TWOS_3_io_s;
-  assign HAD_DVD_TWOS_4_io_a = (io_dend[4] ^ dvdTwosEn);
-  assign hadDvdTwosS_4 = HAD_DVD_TWOS_4_io_s;
-  assign HAD_DVD_TWOS_5_io_a = (io_dend[5] ^ dvdTwosEn);
-  assign hadDvdTwosS_5 = HAD_DVD_TWOS_5_io_s;
-  assign HAD_DVD_TWOS_6_io_a = (io_dend[6] ^ dvdTwosEn);
-  assign hadDvdTwosS_6 = HAD_DVD_TWOS_6_io_s;
-  assign HAD_DVD_TWOS_7_io_a = (io_dend[7] ^ dvdTwosEn);
-  assign hadDvdTwosS_7 = HAD_DVD_TWOS_7_io_s;
+  assign HAD_DVD_TWOS_0_A = (io_dend[0] ^ dvdTwosEn);
+  assign HAD_DVD_TWOS_0_B = _zz_B[0];
+  assign hadDvdTwosS_0 = HAD_DVD_TWOS_0_SUM;
+  assign HAD_DVD_TWOS_1_A = (io_dend[1] ^ dvdTwosEn);
+  assign hadDvdTwosS_1 = HAD_DVD_TWOS_1_SUM;
+  assign HAD_DVD_TWOS_2_A = (io_dend[2] ^ dvdTwosEn);
+  assign hadDvdTwosS_2 = HAD_DVD_TWOS_2_SUM;
+  assign HAD_DVD_TWOS_3_A = (io_dend[3] ^ dvdTwosEn);
+  assign hadDvdTwosS_3 = HAD_DVD_TWOS_3_SUM;
+  assign HAD_DVD_TWOS_4_A = (io_dend[4] ^ dvdTwosEn);
+  assign hadDvdTwosS_4 = HAD_DVD_TWOS_4_SUM;
+  assign HAD_DVD_TWOS_5_A = (io_dend[5] ^ dvdTwosEn);
+  assign hadDvdTwosS_5 = HAD_DVD_TWOS_5_SUM;
+  assign HAD_DVD_TWOS_6_A = (io_dend[6] ^ dvdTwosEn);
+  assign hadDvdTwosS_6 = HAD_DVD_TWOS_6_SUM;
+  assign HAD_DVD_TWOS_7_A = (io_dend[7] ^ dvdTwosEn);
+  assign hadDvdTwosS_7 = HAD_DVD_TWOS_7_SUM;
   assign xorDvr_0 = (io_dsor[0] ^ dvrTwosEnInverted);
   assign xorDvr_1 = (io_dsor[1] ^ dvrTwosEnInverted);
   assign xorDvr_2 = (io_dsor[2] ^ dvrTwosEnInverted);
@@ -1464,42 +1464,42 @@ module Div (
   assign xorDvr_5 = (io_dsor[5] ^ dvrTwosEnInverted);
   assign xorDvr_6 = (io_dsor[6] ^ dvrTwosEnInverted);
   assign xorDvr_7 = (io_dsor[7] ^ dvrTwosEnInverted);
-  assign HAR0_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d0_io_s);
-  assign HAR1_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d1_io_s);
-  assign HAR2_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d2_io_s);
-  assign HAR3_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d3_io_s);
-  assign HAR4_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d4_io_s);
-  assign HAR5_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d5_io_s);
-  assign HAR6_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d6_io_s);
-  assign HAR7_SIGN_io_a = (dvdTwosEn ^ DU_Q0D0d7_io_s);
-  assign HAQ0_SIGN_io_a = (qSign ^ DU_Q0D0d12_EXT_io_c);
-  assign HAQ1_SIGN_io_a = (qSign ^ DU_Q1D1d12_EXT_io_c);
-  assign HAQ2_SIGN_io_a = (qSign ^ DU_Q2D2d11_EXT_io_c);
-  assign HAQ3_SIGN_io_a = (qSign ^ DU_Q3D3d10_EXT_io_c);
-  assign HAQ4_SIGN_io_a = (qSign ^ DU_Q4D4d9_EXT_io_c);
-  assign HAQ5_SIGN_io_a = (qSign ^ DU_Q5D5d8_EXT_io_c);
-  assign HAQ6_SIGN_io_a = (qSign ^ DU_Q6D6d7_io_c);
-  assign HAQ7_SIGN_io_a = (qSign ^ DU_Q7D7d7_io_c);
+  assign HAR0_SIGN_A = (dvdTwosEn ^ DU_Q0D0d0_io_s);
+  assign HAR1_SIGN_A = (dvdTwosEn ^ DU_Q0D0d1_io_s);
+  assign HAR2_SIGN_A = (dvdTwosEn ^ DU_Q0D0d2_io_s);
+  assign HAR3_SIGN_A = (dvdTwosEn ^ DU_Q0D0d3_io_s);
+  assign HAR4_SIGN_A = (dvdTwosEn ^ DU_Q0D0d4_io_s);
+  assign HAR5_SIGN_A = (dvdTwosEn ^ DU_Q0D0d5_io_s);
+  assign HAR6_SIGN_A = (dvdTwosEn ^ DU_Q0D0d6_io_s);
+  assign HAR7_SIGN_A = (dvdTwosEn ^ DU_Q0D0d7_io_s);
+  assign HAQ0_SIGN_A = (qSign ^ DU_Q0D0d12_EXT_io_c);
+  assign HAQ1_SIGN_A = (qSign ^ DU_Q1D1d12_EXT_io_c);
+  assign HAQ2_SIGN_A = (qSign ^ DU_Q2D2d11_EXT_io_c);
+  assign HAQ3_SIGN_A = (qSign ^ DU_Q3D3d10_EXT_io_c);
+  assign HAQ4_SIGN_A = (qSign ^ DU_Q4D4d9_EXT_io_c);
+  assign HAQ5_SIGN_A = (qSign ^ DU_Q5D5d8_EXT_io_c);
+  assign HAQ6_SIGN_A = (qSign ^ DU_Q6D6d7_io_c);
+  assign HAQ7_SIGN_A = (qSign ^ DU_Q7D7d7_io_c);
   always @(*) begin
-    io_q[0] = HAQ0_SIGN_io_s;
-    io_q[1] = HAQ1_SIGN_io_s;
-    io_q[2] = HAQ2_SIGN_io_s;
-    io_q[3] = HAQ3_SIGN_io_s;
-    io_q[4] = HAQ4_SIGN_io_s;
-    io_q[5] = HAQ5_SIGN_io_s;
-    io_q[6] = HAQ6_SIGN_io_s;
-    io_q[7] = HAQ7_SIGN_io_s;
+    io_q[0] = HAQ0_SIGN_SUM;
+    io_q[1] = HAQ1_SIGN_SUM;
+    io_q[2] = HAQ2_SIGN_SUM;
+    io_q[3] = HAQ3_SIGN_SUM;
+    io_q[4] = HAQ4_SIGN_SUM;
+    io_q[5] = HAQ5_SIGN_SUM;
+    io_q[6] = HAQ6_SIGN_SUM;
+    io_q[7] = HAQ7_SIGN_SUM;
   end
 
   always @(*) begin
-    io_r[0] = HAR0_SIGN_io_s;
-    io_r[1] = HAR1_SIGN_io_s;
-    io_r[2] = HAR2_SIGN_io_s;
-    io_r[3] = HAR3_SIGN_io_s;
-    io_r[4] = HAR4_SIGN_io_s;
-    io_r[5] = HAR5_SIGN_io_s;
-    io_r[6] = HAR6_SIGN_io_s;
-    io_r[7] = HAR7_SIGN_io_s;
+    io_r[0] = HAR0_SIGN_SUM;
+    io_r[1] = HAR1_SIGN_SUM;
+    io_r[2] = HAR2_SIGN_SUM;
+    io_r[3] = HAR3_SIGN_SUM;
+    io_r[4] = HAR4_SIGN_SUM;
+    io_r[5] = HAR5_SIGN_SUM;
+    io_r[6] = HAR6_SIGN_SUM;
+    io_r[7] = HAR7_SIGN_SUM;
   end
 
   assign io_edivzero = (io_en ? isZero : 1'b0);
@@ -1515,174 +1515,174 @@ module Mul (
   output reg [15:0]   io_p
 );
 
-  wire                HA_P1A0B1_io_s;
-  wire                HA_P1A0B1_io_c;
-  wire                FA_P2A1B1_io_s;
-  wire                FA_P2A1B1_io_c;
-  wire                HA_P2A0B2_io_s;
-  wire                HA_P2A0B2_io_c;
-  wire                FA_P3A2B1_io_s;
-  wire                FA_P3A2B1_io_c;
-  wire                FA_P3A1B2_io_s;
-  wire                FA_P3A1B2_io_c;
-  wire                HA_P3A0B3_io_s;
-  wire                HA_P3A0B3_io_c;
-  wire                FA_P4A3B1_io_s;
-  wire                FA_P4A3B1_io_c;
-  wire                FA_P4A2B2_io_s;
-  wire                FA_P4A2B2_io_c;
-  wire                FA_P4A1B3_io_s;
-  wire                FA_P4A1B3_io_c;
-  wire                HA_P4A0B4_io_s;
-  wire                HA_P4A0B4_io_c;
-  wire                FA_P5A4B1_io_s;
-  wire                FA_P5A4B1_io_c;
-  wire                FA_P5A3B2_io_s;
-  wire                FA_P5A3B2_io_c;
-  wire                FA_P5A2B3_io_s;
-  wire                FA_P5A2B3_io_c;
-  wire                FA_P5A1B4_io_s;
-  wire                FA_P5A1B4_io_c;
-  wire                HA_P5A0B5_io_s;
-  wire                HA_P5A0B5_io_c;
-  wire                FA_P6A5B1_io_s;
-  wire                FA_P6A5B1_io_c;
-  wire                FA_P6A4B2_io_s;
-  wire                FA_P6A4B2_io_c;
-  wire                FA_P6A3B3_io_s;
-  wire                FA_P6A3B3_io_c;
-  wire                FA_P6A2B4_io_s;
-  wire                FA_P6A2B4_io_c;
-  wire                FA_P6A1B5_io_s;
-  wire                FA_P6A1B5_io_c;
-  wire                HA_P6A0B6_io_s;
-  wire                HA_P6A0B6_io_c;
-  wire                FA_P7A6B1_io_s;
-  wire                FA_P7A6B1_io_c;
-  wire                FA_P7A5B2_io_s;
-  wire                FA_P7A5B2_io_c;
-  wire                FA_P7A4B3_io_s;
-  wire                FA_P7A4B3_io_c;
-  wire                FA_P7A3B4_io_s;
-  wire                FA_P7A3B4_io_c;
-  wire                FA_P7A2B5_io_s;
-  wire                FA_P7A2B5_io_c;
-  wire                FA_P7A1B6_io_s;
-  wire                FA_P7A1B6_io_c;
-  wire                FA_P7A0B7_io_s;
-  wire                FA_P7A0B7_io_c;
-  wire                FA_P8A7B1_io_s;
-  wire                FA_P8A7B1_io_c;
-  wire                FA_P8A6B2_io_s;
-  wire                FA_P8A6B2_io_c;
-  wire                FA_P8A5B3_io_s;
-  wire                FA_P8A5B3_io_c;
-  wire                FA_P8A4B4_io_s;
-  wire                FA_P8A4B4_io_c;
-  wire                FA_P8A3B5_io_s;
-  wire                FA_P8A3B5_io_c;
-  wire                FA_P8A2B6_io_s;
-  wire                FA_P8A2B6_io_c;
-  wire                FA_P8A1B7_io_s;
-  wire                FA_P8A1B7_io_c;
-  wire                FA_P9A7B1_io_s;
-  wire                FA_P9A7B1_io_c;
-  wire                FA_P9A7B2_io_s;
-  wire                FA_P9A7B2_io_c;
-  wire                FA_P9A6B3_io_s;
-  wire                FA_P9A6B3_io_c;
-  wire                FA_P9A5B4_io_s;
-  wire                FA_P9A5B4_io_c;
-  wire                FA_P9A4B5_io_s;
-  wire                FA_P9A4B5_io_c;
-  wire                FA_P9A3B6_io_s;
-  wire                FA_P9A3B6_io_c;
-  wire                FA_P9A2B7_io_s;
-  wire                FA_P9A2B7_io_c;
-  wire                FA_P10A7B1_io_s;
-  wire                FA_P10A7B1_io_c;
-  wire                FA_P10A7B2_io_s;
-  wire                FA_P10A7B2_io_c;
-  wire                FA_P10A7B3_io_s;
-  wire                FA_P10A7B3_io_c;
-  wire                FA_P10A6B4_io_s;
-  wire                FA_P10A6B4_io_c;
-  wire                FA_P10A5B5_io_s;
-  wire                FA_P10A5B5_io_c;
-  wire                FA_P10A4B6_io_s;
-  wire                FA_P10A4B6_io_c;
-  wire                FA_P10A3B7_io_s;
-  wire                FA_P10A3B7_io_c;
-  wire                FA_P11A7B1_io_s;
-  wire                FA_P11A7B1_io_c;
-  wire                FA_P11A7B2_io_s;
-  wire                FA_P11A7B2_io_c;
-  wire                FA_P11A7B3_io_s;
-  wire                FA_P11A7B3_io_c;
-  wire                FA_P11A7B4_io_s;
-  wire                FA_P11A7B4_io_c;
-  wire                FA_P11A6B5_io_s;
-  wire                FA_P11A6B5_io_c;
-  wire                FA_P11A5B6_io_s;
-  wire                FA_P11A5B6_io_c;
-  wire                FA_P11A4B7_io_s;
-  wire                FA_P11A4B7_io_c;
-  wire                FA_P12A7B1_io_s;
-  wire                FA_P12A7B1_io_c;
-  wire                FA_P12A7B2_io_s;
-  wire                FA_P12A7B2_io_c;
-  wire                FA_P12A7B3_io_s;
-  wire                FA_P12A7B3_io_c;
-  wire                FA_P12A7B4_io_s;
-  wire                FA_P12A7B4_io_c;
-  wire                FA_P12A7B5_io_s;
-  wire                FA_P12A7B5_io_c;
-  wire                FA_P12A6B6_io_s;
-  wire                FA_P12A6B6_io_c;
-  wire                FA_P12A5B7_io_s;
-  wire                FA_P12A5B7_io_c;
-  wire                FA_P13A7B1_io_s;
-  wire                FA_P13A7B1_io_c;
-  wire                FA_P13A7B2_io_s;
-  wire                FA_P13A7B2_io_c;
-  wire                FA_P13A7B3_io_s;
-  wire                FA_P13A7B3_io_c;
-  wire                FA_P13A7B4_io_s;
-  wire                FA_P13A7B4_io_c;
-  wire                FA_P13A7B5_io_s;
-  wire                FA_P13A7B5_io_c;
-  wire                FA_P13A7B6_io_s;
-  wire                FA_P13A7B6_io_c;
-  wire                FA_P13A6B7_io_s;
-  wire                FA_P13A6B7_io_c;
-  wire                FA_P14A7B1_io_s;
-  wire                FA_P14A7B1_io_c;
-  wire                FA_P14A7B2_io_s;
-  wire                FA_P14A7B2_io_c;
-  wire                FA_P14A7B3_io_s;
-  wire                FA_P14A7B3_io_c;
-  wire                FA_P14A7B4_io_s;
-  wire                FA_P14A7B4_io_c;
-  wire                FA_P14A7B5_io_s;
-  wire                FA_P14A7B5_io_c;
-  wire                FA_P14A7B6_io_s;
-  wire                FA_P14A7B6_io_c;
-  wire                FA_P14A7B7_io_s;
-  wire                FA_P14A7B7_io_c;
-  wire                FA_P15A7B1_io_s;
-  wire                FA_P15A7B1_io_c;
-  wire                FA_P15A7B2_io_s;
-  wire                FA_P15A7B2_io_c;
-  wire                FA_P15A7B3_io_s;
-  wire                FA_P15A7B3_io_c;
-  wire                FA_P15A7B4_io_s;
-  wire                FA_P15A7B4_io_c;
-  wire                FA_P15A7B5_io_s;
-  wire                FA_P15A7B5_io_c;
-  wire                FA_P15A7B6_io_s;
-  wire                FA_P15A7B6_io_c;
-  wire                FA_P15A7B7_io_s;
-  wire                FA_P15A7B7_io_c;
+  wire                HA_P1A0B1_COUT;
+  wire                HA_P1A0B1_SUM;
+  wire                FA_P2A1B1_COUT;
+  wire                FA_P2A1B1_SUM;
+  wire                HA_P2A0B2_COUT;
+  wire                HA_P2A0B2_SUM;
+  wire                FA_P3A2B1_COUT;
+  wire                FA_P3A2B1_SUM;
+  wire                FA_P3A1B2_COUT;
+  wire                FA_P3A1B2_SUM;
+  wire                HA_P3A0B3_COUT;
+  wire                HA_P3A0B3_SUM;
+  wire                FA_P4A3B1_COUT;
+  wire                FA_P4A3B1_SUM;
+  wire                FA_P4A2B2_COUT;
+  wire                FA_P4A2B2_SUM;
+  wire                FA_P4A1B3_COUT;
+  wire                FA_P4A1B3_SUM;
+  wire                HA_P4A0B4_COUT;
+  wire                HA_P4A0B4_SUM;
+  wire                FA_P5A4B1_COUT;
+  wire                FA_P5A4B1_SUM;
+  wire                FA_P5A3B2_COUT;
+  wire                FA_P5A3B2_SUM;
+  wire                FA_P5A2B3_COUT;
+  wire                FA_P5A2B3_SUM;
+  wire                FA_P5A1B4_COUT;
+  wire                FA_P5A1B4_SUM;
+  wire                HA_P5A0B5_COUT;
+  wire                HA_P5A0B5_SUM;
+  wire                FA_P6A5B1_COUT;
+  wire                FA_P6A5B1_SUM;
+  wire                FA_P6A4B2_COUT;
+  wire                FA_P6A4B2_SUM;
+  wire                FA_P6A3B3_COUT;
+  wire                FA_P6A3B3_SUM;
+  wire                FA_P6A2B4_COUT;
+  wire                FA_P6A2B4_SUM;
+  wire                FA_P6A1B5_COUT;
+  wire                FA_P6A1B5_SUM;
+  wire                HA_P6A0B6_COUT;
+  wire                HA_P6A0B6_SUM;
+  wire                FA_P7A6B1_COUT;
+  wire                FA_P7A6B1_SUM;
+  wire                FA_P7A5B2_COUT;
+  wire                FA_P7A5B2_SUM;
+  wire                FA_P7A4B3_COUT;
+  wire                FA_P7A4B3_SUM;
+  wire                FA_P7A3B4_COUT;
+  wire                FA_P7A3B4_SUM;
+  wire                FA_P7A2B5_COUT;
+  wire                FA_P7A2B5_SUM;
+  wire                FA_P7A1B6_COUT;
+  wire                FA_P7A1B6_SUM;
+  wire                FA_P7A0B7_COUT;
+  wire                FA_P7A0B7_SUM;
+  wire                FA_P8A7B1_COUT;
+  wire                FA_P8A7B1_SUM;
+  wire                FA_P8A6B2_COUT;
+  wire                FA_P8A6B2_SUM;
+  wire                FA_P8A5B3_COUT;
+  wire                FA_P8A5B3_SUM;
+  wire                FA_P8A4B4_COUT;
+  wire                FA_P8A4B4_SUM;
+  wire                FA_P8A3B5_COUT;
+  wire                FA_P8A3B5_SUM;
+  wire                FA_P8A2B6_COUT;
+  wire                FA_P8A2B6_SUM;
+  wire                FA_P8A1B7_COUT;
+  wire                FA_P8A1B7_SUM;
+  wire                FA_P9A7B1_COUT;
+  wire                FA_P9A7B1_SUM;
+  wire                FA_P9A7B2_COUT;
+  wire                FA_P9A7B2_SUM;
+  wire                FA_P9A6B3_COUT;
+  wire                FA_P9A6B3_SUM;
+  wire                FA_P9A5B4_COUT;
+  wire                FA_P9A5B4_SUM;
+  wire                FA_P9A4B5_COUT;
+  wire                FA_P9A4B5_SUM;
+  wire                FA_P9A3B6_COUT;
+  wire                FA_P9A3B6_SUM;
+  wire                FA_P9A2B7_COUT;
+  wire                FA_P9A2B7_SUM;
+  wire                FA_P10A7B1_COUT;
+  wire                FA_P10A7B1_SUM;
+  wire                FA_P10A7B2_COUT;
+  wire                FA_P10A7B2_SUM;
+  wire                FA_P10A7B3_COUT;
+  wire                FA_P10A7B3_SUM;
+  wire                FA_P10A6B4_COUT;
+  wire                FA_P10A6B4_SUM;
+  wire                FA_P10A5B5_COUT;
+  wire                FA_P10A5B5_SUM;
+  wire                FA_P10A4B6_COUT;
+  wire                FA_P10A4B6_SUM;
+  wire                FA_P10A3B7_COUT;
+  wire                FA_P10A3B7_SUM;
+  wire                FA_P11A7B1_COUT;
+  wire                FA_P11A7B1_SUM;
+  wire                FA_P11A7B2_COUT;
+  wire                FA_P11A7B2_SUM;
+  wire                FA_P11A7B3_COUT;
+  wire                FA_P11A7B3_SUM;
+  wire                FA_P11A7B4_COUT;
+  wire                FA_P11A7B4_SUM;
+  wire                FA_P11A6B5_COUT;
+  wire                FA_P11A6B5_SUM;
+  wire                FA_P11A5B6_COUT;
+  wire                FA_P11A5B6_SUM;
+  wire                FA_P11A4B7_COUT;
+  wire                FA_P11A4B7_SUM;
+  wire                FA_P12A7B1_COUT;
+  wire                FA_P12A7B1_SUM;
+  wire                FA_P12A7B2_COUT;
+  wire                FA_P12A7B2_SUM;
+  wire                FA_P12A7B3_COUT;
+  wire                FA_P12A7B3_SUM;
+  wire                FA_P12A7B4_COUT;
+  wire                FA_P12A7B4_SUM;
+  wire                FA_P12A7B5_COUT;
+  wire                FA_P12A7B5_SUM;
+  wire                FA_P12A6B6_COUT;
+  wire                FA_P12A6B6_SUM;
+  wire                FA_P12A5B7_COUT;
+  wire                FA_P12A5B7_SUM;
+  wire                FA_P13A7B1_COUT;
+  wire                FA_P13A7B1_SUM;
+  wire                FA_P13A7B2_COUT;
+  wire                FA_P13A7B2_SUM;
+  wire                FA_P13A7B3_COUT;
+  wire                FA_P13A7B3_SUM;
+  wire                FA_P13A7B4_COUT;
+  wire                FA_P13A7B4_SUM;
+  wire                FA_P13A7B5_COUT;
+  wire                FA_P13A7B5_SUM;
+  wire                FA_P13A7B6_COUT;
+  wire                FA_P13A7B6_SUM;
+  wire                FA_P13A6B7_COUT;
+  wire                FA_P13A6B7_SUM;
+  wire                FA_P14A7B1_COUT;
+  wire                FA_P14A7B1_SUM;
+  wire                FA_P14A7B2_COUT;
+  wire                FA_P14A7B2_SUM;
+  wire                FA_P14A7B3_COUT;
+  wire                FA_P14A7B3_SUM;
+  wire                FA_P14A7B4_COUT;
+  wire                FA_P14A7B4_SUM;
+  wire                FA_P14A7B5_COUT;
+  wire                FA_P14A7B5_SUM;
+  wire                FA_P14A7B6_COUT;
+  wire                FA_P14A7B6_SUM;
+  wire                FA_P14A7B7_COUT;
+  wire                FA_P14A7B7_SUM;
+  wire                FA_P15A7B1_COUT;
+  wire                FA_P15A7B1_SUM;
+  wire                FA_P15A7B2_COUT;
+  wire                FA_P15A7B2_SUM;
+  wire                FA_P15A7B3_COUT;
+  wire                FA_P15A7B3_SUM;
+  wire                FA_P15A7B4_COUT;
+  wire                FA_P15A7B4_SUM;
+  wire                FA_P15A7B5_COUT;
+  wire                FA_P15A7B5_SUM;
+  wire                FA_P15A7B6_COUT;
+  wire                FA_P15A7B6_SUM;
+  wire                FA_P15A7B7_COUT;
+  wire                FA_P15A7B7_SUM;
   wire                A0xB0_0;
   wire                A1xB0_1;
   wire                A2xB0_2;
@@ -1765,587 +1765,587 @@ module Mul (
   wire                P13_EXTEN_EN;
   wire                P14_EXTEN_EN;
 
-  HA_24 HA_P1A0B1 (
-    .io_a (A1xB0_1       ), //i
-    .io_b (A0xB1_8       ), //i
-    .io_s (HA_P1A0B1_io_s), //o
-    .io_c (HA_P1A0B1_io_c)  //o
-  );
-  FA FA_P2A1B1 (
-    .io_a (A2xB0_2       ), //i
-    .io_b (A1xB1_9       ), //i
-    .io_y (HA_P1A0B1_io_c), //i
-    .io_s (FA_P2A1B1_io_s), //o
-    .io_c (FA_P2A1B1_io_c)  //o
-  );
-  HA_24 HA_P2A0B2 (
-    .io_a (FA_P2A1B1_io_s), //i
-    .io_b (A0xB2_16      ), //i
-    .io_s (HA_P2A0B2_io_s), //o
-    .io_c (HA_P2A0B2_io_c)  //o
-  );
-  FA FA_P3A2B1 (
-    .io_a (A3xB0_3       ), //i
-    .io_b (A2xB1_10      ), //i
-    .io_y (FA_P2A1B1_io_c), //i
-    .io_s (FA_P3A2B1_io_s), //o
-    .io_c (FA_P3A2B1_io_c)  //o
-  );
-  FA FA_P3A1B2 (
-    .io_a (FA_P3A2B1_io_s), //i
-    .io_b (A1xB2_17      ), //i
-    .io_y (HA_P2A0B2_io_c), //i
-    .io_s (FA_P3A1B2_io_s), //o
-    .io_c (FA_P3A1B2_io_c)  //o
-  );
-  HA_24 HA_P3A0B3 (
-    .io_a (FA_P3A1B2_io_s), //i
-    .io_b (A0xB3_24      ), //i
-    .io_s (HA_P3A0B3_io_s), //o
-    .io_c (HA_P3A0B3_io_c)  //o
-  );
-  FA FA_P4A3B1 (
-    .io_a (A4xB0_4       ), //i
-    .io_b (A3xB1_11      ), //i
-    .io_y (FA_P3A2B1_io_c), //i
-    .io_s (FA_P4A3B1_io_s), //o
-    .io_c (FA_P4A3B1_io_c)  //o
-  );
-  FA FA_P4A2B2 (
-    .io_a (FA_P4A3B1_io_s), //i
-    .io_b (A2xB2_18      ), //i
-    .io_y (FA_P3A1B2_io_c), //i
-    .io_s (FA_P4A2B2_io_s), //o
-    .io_c (FA_P4A2B2_io_c)  //o
-  );
-  FA FA_P4A1B3 (
-    .io_a (FA_P4A2B2_io_s), //i
-    .io_b (A1xB3_25      ), //i
-    .io_y (HA_P3A0B3_io_c), //i
-    .io_s (FA_P4A1B3_io_s), //o
-    .io_c (FA_P4A1B3_io_c)  //o
-  );
-  HA_24 HA_P4A0B4 (
-    .io_a (FA_P4A1B3_io_s), //i
-    .io_b (A0xB4_32      ), //i
-    .io_s (HA_P4A0B4_io_s), //o
-    .io_c (HA_P4A0B4_io_c)  //o
-  );
-  FA FA_P5A4B1 (
-    .io_a (A5xB0_5       ), //i
-    .io_b (A4xB1_12      ), //i
-    .io_y (FA_P4A3B1_io_c), //i
-    .io_s (FA_P5A4B1_io_s), //o
-    .io_c (FA_P5A4B1_io_c)  //o
-  );
-  FA FA_P5A3B2 (
-    .io_a (FA_P5A4B1_io_s), //i
-    .io_b (A3xB2_19      ), //i
-    .io_y (FA_P4A2B2_io_c), //i
-    .io_s (FA_P5A3B2_io_s), //o
-    .io_c (FA_P5A3B2_io_c)  //o
-  );
-  FA FA_P5A2B3 (
-    .io_a (FA_P5A3B2_io_s), //i
-    .io_b (A2xB3_26      ), //i
-    .io_y (FA_P4A1B3_io_c), //i
-    .io_s (FA_P5A2B3_io_s), //o
-    .io_c (FA_P5A2B3_io_c)  //o
-  );
-  FA FA_P5A1B4 (
-    .io_a (FA_P5A2B3_io_s), //i
-    .io_b (A1xB4_33      ), //i
-    .io_y (HA_P4A0B4_io_c), //i
-    .io_s (FA_P5A1B4_io_s), //o
-    .io_c (FA_P5A1B4_io_c)  //o
-  );
-  HA_24 HA_P5A0B5 (
-    .io_a (FA_P5A1B4_io_s), //i
-    .io_b (A0xB5_40      ), //i
-    .io_s (HA_P5A0B5_io_s), //o
-    .io_c (HA_P5A0B5_io_c)  //o
-  );
-  FA FA_P6A5B1 (
-    .io_a (A6xB0_6       ), //i
-    .io_b (A5xB1_13      ), //i
-    .io_y (FA_P5A4B1_io_c), //i
-    .io_s (FA_P6A5B1_io_s), //o
-    .io_c (FA_P6A5B1_io_c)  //o
-  );
-  FA FA_P6A4B2 (
-    .io_a (FA_P6A5B1_io_s), //i
-    .io_b (A4xB2_20      ), //i
-    .io_y (FA_P5A3B2_io_c), //i
-    .io_s (FA_P6A4B2_io_s), //o
-    .io_c (FA_P6A4B2_io_c)  //o
-  );
-  FA FA_P6A3B3 (
-    .io_a (FA_P6A4B2_io_s), //i
-    .io_b (A3xB3_27      ), //i
-    .io_y (FA_P5A2B3_io_c), //i
-    .io_s (FA_P6A3B3_io_s), //o
-    .io_c (FA_P6A3B3_io_c)  //o
-  );
-  FA FA_P6A2B4 (
-    .io_a (FA_P6A3B3_io_s), //i
-    .io_b (A2xB4_34      ), //i
-    .io_y (FA_P5A1B4_io_c), //i
-    .io_s (FA_P6A2B4_io_s), //o
-    .io_c (FA_P6A2B4_io_c)  //o
-  );
-  FA FA_P6A1B5 (
-    .io_a (FA_P6A2B4_io_s), //i
-    .io_b (A1xB5_41      ), //i
-    .io_y (HA_P5A0B5_io_c), //i
-    .io_s (FA_P6A1B5_io_s), //o
-    .io_c (FA_P6A1B5_io_c)  //o
-  );
-  HA_24 HA_P6A0B6 (
-    .io_a (FA_P6A1B5_io_s), //i
-    .io_b (A0xB6_48      ), //i
-    .io_s (HA_P6A0B6_io_s), //o
-    .io_c (HA_P6A0B6_io_c)  //o
-  );
-  FA FA_P7A6B1 (
-    .io_a (A7xB0_7       ), //i
-    .io_b (A6xB1_14      ), //i
-    .io_y (FA_P6A5B1_io_c), //i
-    .io_s (FA_P7A6B1_io_s), //o
-    .io_c (FA_P7A6B1_io_c)  //o
-  );
-  FA FA_P7A5B2 (
-    .io_a (FA_P7A6B1_io_s), //i
-    .io_b (A5xB2_21      ), //i
-    .io_y (FA_P6A4B2_io_c), //i
-    .io_s (FA_P7A5B2_io_s), //o
-    .io_c (FA_P7A5B2_io_c)  //o
-  );
-  FA FA_P7A4B3 (
-    .io_a (FA_P7A5B2_io_s), //i
-    .io_b (A4xB3_28      ), //i
-    .io_y (FA_P6A3B3_io_c), //i
-    .io_s (FA_P7A4B3_io_s), //o
-    .io_c (FA_P7A4B3_io_c)  //o
-  );
-  FA FA_P7A3B4 (
-    .io_a (FA_P7A4B3_io_s), //i
-    .io_b (A3xB4_35      ), //i
-    .io_y (FA_P6A2B4_io_c), //i
-    .io_s (FA_P7A3B4_io_s), //o
-    .io_c (FA_P7A3B4_io_c)  //o
-  );
-  FA FA_P7A2B5 (
-    .io_a (FA_P7A3B4_io_s), //i
-    .io_b (A2xB5_42      ), //i
-    .io_y (FA_P6A1B5_io_c), //i
-    .io_s (FA_P7A2B5_io_s), //o
-    .io_c (FA_P7A2B5_io_c)  //o
-  );
-  FA FA_P7A1B6 (
-    .io_a (FA_P7A2B5_io_s), //i
-    .io_b (A1xB6_49      ), //i
-    .io_y (HA_P6A0B6_io_c), //i
-    .io_s (FA_P7A1B6_io_s), //o
-    .io_c (FA_P7A1B6_io_c)  //o
-  );
-  FA FA_P7A0B7 (
-    .io_a (FA_P7A1B6_io_s), //i
-    .io_b (P7_INV        ), //i
-    .io_y (twosEn        ), //i
-    .io_s (FA_P7A0B7_io_s), //o
-    .io_c (FA_P7A0B7_io_c)  //o
-  );
-  FA FA_P8A7B1 (
-    .io_a (P7_EXTEN_EN   ), //i
-    .io_b (A7xB1_15      ), //i
-    .io_y (FA_P7A6B1_io_c), //i
-    .io_s (FA_P8A7B1_io_s), //o
-    .io_c (FA_P8A7B1_io_c)  //o
-  );
-  FA FA_P8A6B2 (
-    .io_a (FA_P8A7B1_io_s), //i
-    .io_b (A6xB2_22      ), //i
-    .io_y (FA_P7A5B2_io_c), //i
-    .io_s (FA_P8A6B2_io_s), //o
-    .io_c (FA_P8A6B2_io_c)  //o
-  );
-  FA FA_P8A5B3 (
-    .io_a (FA_P8A6B2_io_s), //i
-    .io_b (A5xB3_29      ), //i
-    .io_y (FA_P7A4B3_io_c), //i
-    .io_s (FA_P8A5B3_io_s), //o
-    .io_c (FA_P8A5B3_io_c)  //o
-  );
-  FA FA_P8A4B4 (
-    .io_a (FA_P8A5B3_io_s), //i
-    .io_b (A4xB4_36      ), //i
-    .io_y (FA_P7A3B4_io_c), //i
-    .io_s (FA_P8A4B4_io_s), //o
-    .io_c (FA_P8A4B4_io_c)  //o
-  );
-  FA FA_P8A3B5 (
-    .io_a (FA_P8A4B4_io_s), //i
-    .io_b (A3xB5_43      ), //i
-    .io_y (FA_P7A2B5_io_c), //i
-    .io_s (FA_P8A3B5_io_s), //o
-    .io_c (FA_P8A3B5_io_c)  //o
-  );
-  FA FA_P8A2B6 (
-    .io_a (FA_P8A3B5_io_s), //i
-    .io_b (A2xB6_50      ), //i
-    .io_y (FA_P7A1B6_io_c), //i
-    .io_s (FA_P8A2B6_io_s), //o
-    .io_c (FA_P8A2B6_io_c)  //o
-  );
-  FA FA_P8A1B7 (
-    .io_a (FA_P8A2B6_io_s), //i
-    .io_b (P8_INV        ), //i
-    .io_y (FA_P7A0B7_io_c), //i
-    .io_s (FA_P8A1B7_io_s), //o
-    .io_c (FA_P8A1B7_io_c)  //o
-  );
-  FA FA_P9A7B1 (
-    .io_a (P7_EXTEN_EN   ), //i
-    .io_b (P8_EXTEN_EN   ), //i
-    .io_y (FA_P8A7B1_io_c), //i
-    .io_s (FA_P9A7B1_io_s), //o
-    .io_c (FA_P9A7B1_io_c)  //o
-  );
-  FA FA_P9A7B2 (
-    .io_a (FA_P9A7B1_io_s), //i
-    .io_b (A7xB2_23      ), //i
-    .io_y (FA_P8A6B2_io_c), //i
-    .io_s (FA_P9A7B2_io_s), //o
-    .io_c (FA_P9A7B2_io_c)  //o
-  );
-  FA FA_P9A6B3 (
-    .io_a (FA_P9A7B2_io_s), //i
-    .io_b (A6xB3_30      ), //i
-    .io_y (FA_P8A5B3_io_c), //i
-    .io_s (FA_P9A6B3_io_s), //o
-    .io_c (FA_P9A6B3_io_c)  //o
-  );
-  FA FA_P9A5B4 (
-    .io_a (FA_P9A6B3_io_s), //i
-    .io_b (A5xB4_37      ), //i
-    .io_y (FA_P8A4B4_io_c), //i
-    .io_s (FA_P9A5B4_io_s), //o
-    .io_c (FA_P9A5B4_io_c)  //o
-  );
-  FA FA_P9A4B5 (
-    .io_a (FA_P9A5B4_io_s), //i
-    .io_b (A4xB5_44      ), //i
-    .io_y (FA_P8A3B5_io_c), //i
-    .io_s (FA_P9A4B5_io_s), //o
-    .io_c (FA_P9A4B5_io_c)  //o
-  );
-  FA FA_P9A3B6 (
-    .io_a (FA_P9A4B5_io_s), //i
-    .io_b (A3xB6_51      ), //i
-    .io_y (FA_P8A2B6_io_c), //i
-    .io_s (FA_P9A3B6_io_s), //o
-    .io_c (FA_P9A3B6_io_c)  //o
-  );
-  FA FA_P9A2B7 (
-    .io_a (FA_P9A3B6_io_s), //i
-    .io_b (P9_INV        ), //i
-    .io_y (FA_P8A1B7_io_c), //i
-    .io_s (FA_P9A2B7_io_s), //o
-    .io_c (FA_P9A2B7_io_c)  //o
-  );
-  FA FA_P10A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P9A7B1_io_c ), //i
-    .io_s (FA_P10A7B1_io_s), //o
-    .io_c (FA_P10A7B1_io_c)  //o
-  );
-  FA FA_P10A7B2 (
-    .io_a (FA_P10A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P9A7B2_io_c ), //i
-    .io_s (FA_P10A7B2_io_s), //o
-    .io_c (FA_P10A7B2_io_c)  //o
-  );
-  FA FA_P10A7B3 (
-    .io_a (FA_P10A7B2_io_s), //i
-    .io_b (A7xB3_31       ), //i
-    .io_y (FA_P9A6B3_io_c ), //i
-    .io_s (FA_P10A7B3_io_s), //o
-    .io_c (FA_P10A7B3_io_c)  //o
-  );
-  FA FA_P10A6B4 (
-    .io_a (FA_P10A7B3_io_s), //i
-    .io_b (A6xB4_38       ), //i
-    .io_y (FA_P9A5B4_io_c ), //i
-    .io_s (FA_P10A6B4_io_s), //o
-    .io_c (FA_P10A6B4_io_c)  //o
-  );
-  FA FA_P10A5B5 (
-    .io_a (FA_P10A6B4_io_s), //i
-    .io_b (A5xB5_45       ), //i
-    .io_y (FA_P9A4B5_io_c ), //i
-    .io_s (FA_P10A5B5_io_s), //o
-    .io_c (FA_P10A5B5_io_c)  //o
-  );
-  FA FA_P10A4B6 (
-    .io_a (FA_P10A5B5_io_s), //i
-    .io_b (A4xB6_52       ), //i
-    .io_y (FA_P9A3B6_io_c ), //i
-    .io_s (FA_P10A4B6_io_s), //o
-    .io_c (FA_P10A4B6_io_c)  //o
-  );
-  FA FA_P10A3B7 (
-    .io_a (FA_P10A4B6_io_s), //i
-    .io_b (P10_INV        ), //i
-    .io_y (FA_P9A2B7_io_c ), //i
-    .io_s (FA_P10A3B7_io_s), //o
-    .io_c (FA_P10A3B7_io_c)  //o
-  );
-  FA FA_P11A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P10A7B1_io_c), //i
-    .io_s (FA_P11A7B1_io_s), //o
-    .io_c (FA_P11A7B1_io_c)  //o
-  );
-  FA FA_P11A7B2 (
-    .io_a (FA_P11A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P10A7B2_io_c), //i
-    .io_s (FA_P11A7B2_io_s), //o
-    .io_c (FA_P11A7B2_io_c)  //o
-  );
-  FA FA_P11A7B3 (
-    .io_a (FA_P11A7B2_io_s), //i
-    .io_b (P10_EXTEN_EN   ), //i
-    .io_y (FA_P10A7B3_io_c), //i
-    .io_s (FA_P11A7B3_io_s), //o
-    .io_c (FA_P11A7B3_io_c)  //o
-  );
-  FA FA_P11A7B4 (
-    .io_a (FA_P11A7B3_io_s), //i
-    .io_b (A7xB4_39       ), //i
-    .io_y (FA_P10A6B4_io_c), //i
-    .io_s (FA_P11A7B4_io_s), //o
-    .io_c (FA_P11A7B4_io_c)  //o
-  );
-  FA FA_P11A6B5 (
-    .io_a (FA_P11A7B4_io_s), //i
-    .io_b (A6xB5_46       ), //i
-    .io_y (FA_P10A5B5_io_c), //i
-    .io_s (FA_P11A6B5_io_s), //o
-    .io_c (FA_P11A6B5_io_c)  //o
-  );
-  FA FA_P11A5B6 (
-    .io_a (FA_P11A6B5_io_s), //i
-    .io_b (A5xB6_53       ), //i
-    .io_y (FA_P10A4B6_io_c), //i
-    .io_s (FA_P11A5B6_io_s), //o
-    .io_c (FA_P11A5B6_io_c)  //o
-  );
-  FA FA_P11A4B7 (
-    .io_a (FA_P11A5B6_io_s), //i
-    .io_b (P11_INV        ), //i
-    .io_y (FA_P10A3B7_io_c), //i
-    .io_s (FA_P11A4B7_io_s), //o
-    .io_c (FA_P11A4B7_io_c)  //o
-  );
-  FA FA_P12A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P11A7B1_io_c), //i
-    .io_s (FA_P12A7B1_io_s), //o
-    .io_c (FA_P12A7B1_io_c)  //o
-  );
-  FA FA_P12A7B2 (
-    .io_a (FA_P12A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P11A7B2_io_c), //i
-    .io_s (FA_P12A7B2_io_s), //o
-    .io_c (FA_P12A7B2_io_c)  //o
-  );
-  FA FA_P12A7B3 (
-    .io_a (FA_P12A7B2_io_s), //i
-    .io_b (P10_EXTEN_EN   ), //i
-    .io_y (FA_P11A7B3_io_c), //i
-    .io_s (FA_P12A7B3_io_s), //o
-    .io_c (FA_P12A7B3_io_c)  //o
-  );
-  FA FA_P12A7B4 (
-    .io_a (FA_P12A7B3_io_s), //i
-    .io_b (P11_EXTEN_EN   ), //i
-    .io_y (FA_P11A7B4_io_c), //i
-    .io_s (FA_P12A7B4_io_s), //o
-    .io_c (FA_P12A7B4_io_c)  //o
-  );
-  FA FA_P12A7B5 (
-    .io_a (FA_P12A7B4_io_s), //i
-    .io_b (A7xB5_47       ), //i
-    .io_y (FA_P11A6B5_io_c), //i
-    .io_s (FA_P12A7B5_io_s), //o
-    .io_c (FA_P12A7B5_io_c)  //o
-  );
-  FA FA_P12A6B6 (
-    .io_a (FA_P12A7B5_io_s), //i
-    .io_b (A6xB6_54       ), //i
-    .io_y (FA_P11A5B6_io_c), //i
-    .io_s (FA_P12A6B6_io_s), //o
-    .io_c (FA_P12A6B6_io_c)  //o
-  );
-  FA FA_P12A5B7 (
-    .io_a (FA_P12A6B6_io_s), //i
-    .io_b (P12_INV        ), //i
-    .io_y (FA_P11A4B7_io_c), //i
-    .io_s (FA_P12A5B7_io_s), //o
-    .io_c (FA_P12A5B7_io_c)  //o
-  );
-  FA FA_P13A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P12A7B1_io_c), //i
-    .io_s (FA_P13A7B1_io_s), //o
-    .io_c (FA_P13A7B1_io_c)  //o
-  );
-  FA FA_P13A7B2 (
-    .io_a (FA_P13A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P12A7B2_io_c), //i
-    .io_s (FA_P13A7B2_io_s), //o
-    .io_c (FA_P13A7B2_io_c)  //o
-  );
-  FA FA_P13A7B3 (
-    .io_a (FA_P13A7B2_io_s), //i
-    .io_b (P10_EXTEN_EN   ), //i
-    .io_y (FA_P12A7B3_io_c), //i
-    .io_s (FA_P13A7B3_io_s), //o
-    .io_c (FA_P13A7B3_io_c)  //o
-  );
-  FA FA_P13A7B4 (
-    .io_a (FA_P13A7B3_io_s), //i
-    .io_b (P11_EXTEN_EN   ), //i
-    .io_y (FA_P12A7B4_io_c), //i
-    .io_s (FA_P13A7B4_io_s), //o
-    .io_c (FA_P13A7B4_io_c)  //o
-  );
-  FA FA_P13A7B5 (
-    .io_a (FA_P13A7B4_io_s), //i
-    .io_b (P12_EXTEN_EN   ), //i
-    .io_y (FA_P12A7B5_io_c), //i
-    .io_s (FA_P13A7B5_io_s), //o
-    .io_c (FA_P13A7B5_io_c)  //o
-  );
-  FA FA_P13A7B6 (
-    .io_a (FA_P13A7B5_io_s), //i
-    .io_b (A7xB6_55       ), //i
-    .io_y (FA_P12A6B6_io_c), //i
-    .io_s (FA_P13A7B6_io_s), //o
-    .io_c (FA_P13A7B6_io_c)  //o
-  );
-  FA FA_P13A6B7 (
-    .io_a (FA_P13A7B6_io_s), //i
-    .io_b (P13_INV        ), //i
-    .io_y (FA_P12A5B7_io_c), //i
-    .io_s (FA_P13A6B7_io_s), //o
-    .io_c (FA_P13A6B7_io_c)  //o
-  );
-  FA FA_P14A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P13A7B1_io_c), //i
-    .io_s (FA_P14A7B1_io_s), //o
-    .io_c (FA_P14A7B1_io_c)  //o
-  );
-  FA FA_P14A7B2 (
-    .io_a (FA_P14A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P13A7B2_io_c), //i
-    .io_s (FA_P14A7B2_io_s), //o
-    .io_c (FA_P14A7B2_io_c)  //o
-  );
-  FA FA_P14A7B3 (
-    .io_a (FA_P14A7B2_io_s), //i
-    .io_b (P10_EXTEN_EN   ), //i
-    .io_y (FA_P13A7B3_io_c), //i
-    .io_s (FA_P14A7B3_io_s), //o
-    .io_c (FA_P14A7B3_io_c)  //o
-  );
-  FA FA_P14A7B4 (
-    .io_a (FA_P14A7B3_io_s), //i
-    .io_b (P11_EXTEN_EN   ), //i
-    .io_y (FA_P13A7B4_io_c), //i
-    .io_s (FA_P14A7B4_io_s), //o
-    .io_c (FA_P14A7B4_io_c)  //o
-  );
-  FA FA_P14A7B5 (
-    .io_a (FA_P14A7B4_io_s), //i
-    .io_b (P12_EXTEN_EN   ), //i
-    .io_y (FA_P13A7B5_io_c), //i
-    .io_s (FA_P14A7B5_io_s), //o
-    .io_c (FA_P14A7B5_io_c)  //o
-  );
-  FA FA_P14A7B6 (
-    .io_a (FA_P14A7B5_io_s), //i
-    .io_b (P13_EXTEN_EN   ), //i
-    .io_y (FA_P13A7B6_io_c), //i
-    .io_s (FA_P14A7B6_io_s), //o
-    .io_c (FA_P14A7B6_io_c)  //o
-  );
-  FA FA_P14A7B7 (
-    .io_a (FA_P14A7B6_io_s), //i
-    .io_b (P14_INV        ), //i
-    .io_y (FA_P13A6B7_io_c), //i
-    .io_s (FA_P14A7B7_io_s), //o
-    .io_c (FA_P14A7B7_io_c)  //o
-  );
-  FA FA_P15A7B1 (
-    .io_a (P7_EXTEN_EN    ), //i
-    .io_b (P8_EXTEN_EN    ), //i
-    .io_y (FA_P14A7B1_io_c), //i
-    .io_s (FA_P15A7B1_io_s), //o
-    .io_c (FA_P15A7B1_io_c)  //o
-  );
-  FA FA_P15A7B2 (
-    .io_a (FA_P15A7B1_io_s), //i
-    .io_b (P9_EXTEN_EN    ), //i
-    .io_y (FA_P14A7B2_io_c), //i
-    .io_s (FA_P15A7B2_io_s), //o
-    .io_c (FA_P15A7B2_io_c)  //o
-  );
-  FA FA_P15A7B3 (
-    .io_a (FA_P15A7B2_io_s), //i
-    .io_b (P10_EXTEN_EN   ), //i
-    .io_y (FA_P14A7B3_io_c), //i
-    .io_s (FA_P15A7B3_io_s), //o
-    .io_c (FA_P15A7B3_io_c)  //o
-  );
-  FA FA_P15A7B4 (
-    .io_a (FA_P15A7B3_io_s), //i
-    .io_b (P11_EXTEN_EN   ), //i
-    .io_y (FA_P14A7B4_io_c), //i
-    .io_s (FA_P15A7B4_io_s), //o
-    .io_c (FA_P15A7B4_io_c)  //o
-  );
-  FA FA_P15A7B5 (
-    .io_a (FA_P15A7B4_io_s), //i
-    .io_b (P12_EXTEN_EN   ), //i
-    .io_y (FA_P14A7B5_io_c), //i
-    .io_s (FA_P15A7B5_io_s), //o
-    .io_c (FA_P15A7B5_io_c)  //o
-  );
-  FA FA_P15A7B6 (
-    .io_a (FA_P15A7B5_io_s), //i
-    .io_b (P13_EXTEN_EN   ), //i
-    .io_y (FA_P14A7B6_io_c), //i
-    .io_s (FA_P15A7B6_io_s), //o
-    .io_c (FA_P15A7B6_io_c)  //o
-  );
-  FA FA_P15A7B7 (
-    .io_a (FA_P15A7B6_io_s), //i
-    .io_b (P14_EXTEN_EN   ), //i
-    .io_y (FA_P14A7B7_io_c), //i
-    .io_s (FA_P15A7B7_io_s), //o
-    .io_c (FA_P15A7B7_io_c)  //o
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P1A0B1 (
+    .A    (A1xB0_1       ), //i
+    .B    (A0xB1_8       ), //i
+    .COUT (HA_P1A0B1_COUT), //o
+    .SUM  (HA_P1A0B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P2A1B1 (
+    .A    (A2xB0_2       ), //i
+    .B    (A1xB1_9       ), //i
+    .CIN  (HA_P1A0B1_COUT), //i
+    .COUT (FA_P2A1B1_COUT), //o
+    .SUM  (FA_P2A1B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P2A0B2 (
+    .A    (FA_P2A1B1_SUM ), //i
+    .B    (A0xB2_16      ), //i
+    .COUT (HA_P2A0B2_COUT), //o
+    .SUM  (HA_P2A0B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P3A2B1 (
+    .A    (A3xB0_3       ), //i
+    .B    (A2xB1_10      ), //i
+    .CIN  (FA_P2A1B1_COUT), //i
+    .COUT (FA_P3A2B1_COUT), //o
+    .SUM  (FA_P3A2B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P3A1B2 (
+    .A    (FA_P3A2B1_SUM ), //i
+    .B    (A1xB2_17      ), //i
+    .CIN  (HA_P2A0B2_COUT), //i
+    .COUT (FA_P3A1B2_COUT), //o
+    .SUM  (FA_P3A1B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P3A0B3 (
+    .A    (FA_P3A1B2_SUM ), //i
+    .B    (A0xB3_24      ), //i
+    .COUT (HA_P3A0B3_COUT), //o
+    .SUM  (HA_P3A0B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P4A3B1 (
+    .A    (A4xB0_4       ), //i
+    .B    (A3xB1_11      ), //i
+    .CIN  (FA_P3A2B1_COUT), //i
+    .COUT (FA_P4A3B1_COUT), //o
+    .SUM  (FA_P4A3B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P4A2B2 (
+    .A    (FA_P4A3B1_SUM ), //i
+    .B    (A2xB2_18      ), //i
+    .CIN  (FA_P3A1B2_COUT), //i
+    .COUT (FA_P4A2B2_COUT), //o
+    .SUM  (FA_P4A2B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P4A1B3 (
+    .A    (FA_P4A2B2_SUM ), //i
+    .B    (A1xB3_25      ), //i
+    .CIN  (HA_P3A0B3_COUT), //i
+    .COUT (FA_P4A1B3_COUT), //o
+    .SUM  (FA_P4A1B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P4A0B4 (
+    .A    (FA_P4A1B3_SUM ), //i
+    .B    (A0xB4_32      ), //i
+    .COUT (HA_P4A0B4_COUT), //o
+    .SUM  (HA_P4A0B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P5A4B1 (
+    .A    (A5xB0_5       ), //i
+    .B    (A4xB1_12      ), //i
+    .CIN  (FA_P4A3B1_COUT), //i
+    .COUT (FA_P5A4B1_COUT), //o
+    .SUM  (FA_P5A4B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P5A3B2 (
+    .A    (FA_P5A4B1_SUM ), //i
+    .B    (A3xB2_19      ), //i
+    .CIN  (FA_P4A2B2_COUT), //i
+    .COUT (FA_P5A3B2_COUT), //o
+    .SUM  (FA_P5A3B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P5A2B3 (
+    .A    (FA_P5A3B2_SUM ), //i
+    .B    (A2xB3_26      ), //i
+    .CIN  (FA_P4A1B3_COUT), //i
+    .COUT (FA_P5A2B3_COUT), //o
+    .SUM  (FA_P5A2B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P5A1B4 (
+    .A    (FA_P5A2B3_SUM ), //i
+    .B    (A1xB4_33      ), //i
+    .CIN  (HA_P4A0B4_COUT), //i
+    .COUT (FA_P5A1B4_COUT), //o
+    .SUM  (FA_P5A1B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P5A0B5 (
+    .A    (FA_P5A1B4_SUM ), //i
+    .B    (A0xB5_40      ), //i
+    .COUT (HA_P5A0B5_COUT), //o
+    .SUM  (HA_P5A0B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P6A5B1 (
+    .A    (A6xB0_6       ), //i
+    .B    (A5xB1_13      ), //i
+    .CIN  (FA_P5A4B1_COUT), //i
+    .COUT (FA_P6A5B1_COUT), //o
+    .SUM  (FA_P6A5B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P6A4B2 (
+    .A    (FA_P6A5B1_SUM ), //i
+    .B    (A4xB2_20      ), //i
+    .CIN  (FA_P5A3B2_COUT), //i
+    .COUT (FA_P6A4B2_COUT), //o
+    .SUM  (FA_P6A4B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P6A3B3 (
+    .A    (FA_P6A4B2_SUM ), //i
+    .B    (A3xB3_27      ), //i
+    .CIN  (FA_P5A2B3_COUT), //i
+    .COUT (FA_P6A3B3_COUT), //o
+    .SUM  (FA_P6A3B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P6A2B4 (
+    .A    (FA_P6A3B3_SUM ), //i
+    .B    (A2xB4_34      ), //i
+    .CIN  (FA_P5A1B4_COUT), //i
+    .COUT (FA_P6A2B4_COUT), //o
+    .SUM  (FA_P6A2B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P6A1B5 (
+    .A    (FA_P6A2B4_SUM ), //i
+    .B    (A1xB5_41      ), //i
+    .CIN  (HA_P5A0B5_COUT), //i
+    .COUT (FA_P6A1B5_COUT), //o
+    .SUM  (FA_P6A1B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__ha HA_P6A0B6 (
+    .A    (FA_P6A1B5_SUM ), //i
+    .B    (A0xB6_48      ), //i
+    .COUT (HA_P6A0B6_COUT), //o
+    .SUM  (HA_P6A0B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A6B1 (
+    .A    (A7xB0_7       ), //i
+    .B    (A6xB1_14      ), //i
+    .CIN  (FA_P6A5B1_COUT), //i
+    .COUT (FA_P7A6B1_COUT), //o
+    .SUM  (FA_P7A6B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A5B2 (
+    .A    (FA_P7A6B1_SUM ), //i
+    .B    (A5xB2_21      ), //i
+    .CIN  (FA_P6A4B2_COUT), //i
+    .COUT (FA_P7A5B2_COUT), //o
+    .SUM  (FA_P7A5B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A4B3 (
+    .A    (FA_P7A5B2_SUM ), //i
+    .B    (A4xB3_28      ), //i
+    .CIN  (FA_P6A3B3_COUT), //i
+    .COUT (FA_P7A4B3_COUT), //o
+    .SUM  (FA_P7A4B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A3B4 (
+    .A    (FA_P7A4B3_SUM ), //i
+    .B    (A3xB4_35      ), //i
+    .CIN  (FA_P6A2B4_COUT), //i
+    .COUT (FA_P7A3B4_COUT), //o
+    .SUM  (FA_P7A3B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A2B5 (
+    .A    (FA_P7A3B4_SUM ), //i
+    .B    (A2xB5_42      ), //i
+    .CIN  (FA_P6A1B5_COUT), //i
+    .COUT (FA_P7A2B5_COUT), //o
+    .SUM  (FA_P7A2B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A1B6 (
+    .A    (FA_P7A2B5_SUM ), //i
+    .B    (A1xB6_49      ), //i
+    .CIN  (HA_P6A0B6_COUT), //i
+    .COUT (FA_P7A1B6_COUT), //o
+    .SUM  (FA_P7A1B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P7A0B7 (
+    .A    (FA_P7A1B6_SUM ), //i
+    .B    (P7_INV        ), //i
+    .CIN  (twosEn        ), //i
+    .COUT (FA_P7A0B7_COUT), //o
+    .SUM  (FA_P7A0B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A7B1 (
+    .A    (P7_EXTEN_EN   ), //i
+    .B    (A7xB1_15      ), //i
+    .CIN  (FA_P7A6B1_COUT), //i
+    .COUT (FA_P8A7B1_COUT), //o
+    .SUM  (FA_P8A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A6B2 (
+    .A    (FA_P8A7B1_SUM ), //i
+    .B    (A6xB2_22      ), //i
+    .CIN  (FA_P7A5B2_COUT), //i
+    .COUT (FA_P8A6B2_COUT), //o
+    .SUM  (FA_P8A6B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A5B3 (
+    .A    (FA_P8A6B2_SUM ), //i
+    .B    (A5xB3_29      ), //i
+    .CIN  (FA_P7A4B3_COUT), //i
+    .COUT (FA_P8A5B3_COUT), //o
+    .SUM  (FA_P8A5B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A4B4 (
+    .A    (FA_P8A5B3_SUM ), //i
+    .B    (A4xB4_36      ), //i
+    .CIN  (FA_P7A3B4_COUT), //i
+    .COUT (FA_P8A4B4_COUT), //o
+    .SUM  (FA_P8A4B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A3B5 (
+    .A    (FA_P8A4B4_SUM ), //i
+    .B    (A3xB5_43      ), //i
+    .CIN  (FA_P7A2B5_COUT), //i
+    .COUT (FA_P8A3B5_COUT), //o
+    .SUM  (FA_P8A3B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A2B6 (
+    .A    (FA_P8A3B5_SUM ), //i
+    .B    (A2xB6_50      ), //i
+    .CIN  (FA_P7A1B6_COUT), //i
+    .COUT (FA_P8A2B6_COUT), //o
+    .SUM  (FA_P8A2B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P8A1B7 (
+    .A    (FA_P8A2B6_SUM ), //i
+    .B    (P8_INV        ), //i
+    .CIN  (FA_P7A0B7_COUT), //i
+    .COUT (FA_P8A1B7_COUT), //o
+    .SUM  (FA_P8A1B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A7B1 (
+    .A    (P7_EXTEN_EN   ), //i
+    .B    (P8_EXTEN_EN   ), //i
+    .CIN  (FA_P8A7B1_COUT), //i
+    .COUT (FA_P9A7B1_COUT), //o
+    .SUM  (FA_P9A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A7B2 (
+    .A    (FA_P9A7B1_SUM ), //i
+    .B    (A7xB2_23      ), //i
+    .CIN  (FA_P8A6B2_COUT), //i
+    .COUT (FA_P9A7B2_COUT), //o
+    .SUM  (FA_P9A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A6B3 (
+    .A    (FA_P9A7B2_SUM ), //i
+    .B    (A6xB3_30      ), //i
+    .CIN  (FA_P8A5B3_COUT), //i
+    .COUT (FA_P9A6B3_COUT), //o
+    .SUM  (FA_P9A6B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A5B4 (
+    .A    (FA_P9A6B3_SUM ), //i
+    .B    (A5xB4_37      ), //i
+    .CIN  (FA_P8A4B4_COUT), //i
+    .COUT (FA_P9A5B4_COUT), //o
+    .SUM  (FA_P9A5B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A4B5 (
+    .A    (FA_P9A5B4_SUM ), //i
+    .B    (A4xB5_44      ), //i
+    .CIN  (FA_P8A3B5_COUT), //i
+    .COUT (FA_P9A4B5_COUT), //o
+    .SUM  (FA_P9A4B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A3B6 (
+    .A    (FA_P9A4B5_SUM ), //i
+    .B    (A3xB6_51      ), //i
+    .CIN  (FA_P8A2B6_COUT), //i
+    .COUT (FA_P9A3B6_COUT), //o
+    .SUM  (FA_P9A3B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P9A2B7 (
+    .A    (FA_P9A3B6_SUM ), //i
+    .B    (P9_INV        ), //i
+    .CIN  (FA_P8A1B7_COUT), //i
+    .COUT (FA_P9A2B7_COUT), //o
+    .SUM  (FA_P9A2B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P9A7B1_COUT ), //i
+    .COUT (FA_P10A7B1_COUT), //o
+    .SUM  (FA_P10A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A7B2 (
+    .A    (FA_P10A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P9A7B2_COUT ), //i
+    .COUT (FA_P10A7B2_COUT), //o
+    .SUM  (FA_P10A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A7B3 (
+    .A    (FA_P10A7B2_SUM ), //i
+    .B    (A7xB3_31       ), //i
+    .CIN  (FA_P9A6B3_COUT ), //i
+    .COUT (FA_P10A7B3_COUT), //o
+    .SUM  (FA_P10A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A6B4 (
+    .A    (FA_P10A7B3_SUM ), //i
+    .B    (A6xB4_38       ), //i
+    .CIN  (FA_P9A5B4_COUT ), //i
+    .COUT (FA_P10A6B4_COUT), //o
+    .SUM  (FA_P10A6B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A5B5 (
+    .A    (FA_P10A6B4_SUM ), //i
+    .B    (A5xB5_45       ), //i
+    .CIN  (FA_P9A4B5_COUT ), //i
+    .COUT (FA_P10A5B5_COUT), //o
+    .SUM  (FA_P10A5B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A4B6 (
+    .A    (FA_P10A5B5_SUM ), //i
+    .B    (A4xB6_52       ), //i
+    .CIN  (FA_P9A3B6_COUT ), //i
+    .COUT (FA_P10A4B6_COUT), //o
+    .SUM  (FA_P10A4B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P10A3B7 (
+    .A    (FA_P10A4B6_SUM ), //i
+    .B    (P10_INV        ), //i
+    .CIN  (FA_P9A2B7_COUT ), //i
+    .COUT (FA_P10A3B7_COUT), //o
+    .SUM  (FA_P10A3B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P10A7B1_COUT), //i
+    .COUT (FA_P11A7B1_COUT), //o
+    .SUM  (FA_P11A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A7B2 (
+    .A    (FA_P11A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P10A7B2_COUT), //i
+    .COUT (FA_P11A7B2_COUT), //o
+    .SUM  (FA_P11A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A7B3 (
+    .A    (FA_P11A7B2_SUM ), //i
+    .B    (P10_EXTEN_EN   ), //i
+    .CIN  (FA_P10A7B3_COUT), //i
+    .COUT (FA_P11A7B3_COUT), //o
+    .SUM  (FA_P11A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A7B4 (
+    .A    (FA_P11A7B3_SUM ), //i
+    .B    (A7xB4_39       ), //i
+    .CIN  (FA_P10A6B4_COUT), //i
+    .COUT (FA_P11A7B4_COUT), //o
+    .SUM  (FA_P11A7B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A6B5 (
+    .A    (FA_P11A7B4_SUM ), //i
+    .B    (A6xB5_46       ), //i
+    .CIN  (FA_P10A5B5_COUT), //i
+    .COUT (FA_P11A6B5_COUT), //o
+    .SUM  (FA_P11A6B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A5B6 (
+    .A    (FA_P11A6B5_SUM ), //i
+    .B    (A5xB6_53       ), //i
+    .CIN  (FA_P10A4B6_COUT), //i
+    .COUT (FA_P11A5B6_COUT), //o
+    .SUM  (FA_P11A5B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P11A4B7 (
+    .A    (FA_P11A5B6_SUM ), //i
+    .B    (P11_INV        ), //i
+    .CIN  (FA_P10A3B7_COUT), //i
+    .COUT (FA_P11A4B7_COUT), //o
+    .SUM  (FA_P11A4B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P11A7B1_COUT), //i
+    .COUT (FA_P12A7B1_COUT), //o
+    .SUM  (FA_P12A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A7B2 (
+    .A    (FA_P12A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P11A7B2_COUT), //i
+    .COUT (FA_P12A7B2_COUT), //o
+    .SUM  (FA_P12A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A7B3 (
+    .A    (FA_P12A7B2_SUM ), //i
+    .B    (P10_EXTEN_EN   ), //i
+    .CIN  (FA_P11A7B3_COUT), //i
+    .COUT (FA_P12A7B3_COUT), //o
+    .SUM  (FA_P12A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A7B4 (
+    .A    (FA_P12A7B3_SUM ), //i
+    .B    (P11_EXTEN_EN   ), //i
+    .CIN  (FA_P11A7B4_COUT), //i
+    .COUT (FA_P12A7B4_COUT), //o
+    .SUM  (FA_P12A7B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A7B5 (
+    .A    (FA_P12A7B4_SUM ), //i
+    .B    (A7xB5_47       ), //i
+    .CIN  (FA_P11A6B5_COUT), //i
+    .COUT (FA_P12A7B5_COUT), //o
+    .SUM  (FA_P12A7B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A6B6 (
+    .A    (FA_P12A7B5_SUM ), //i
+    .B    (A6xB6_54       ), //i
+    .CIN  (FA_P11A5B6_COUT), //i
+    .COUT (FA_P12A6B6_COUT), //o
+    .SUM  (FA_P12A6B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P12A5B7 (
+    .A    (FA_P12A6B6_SUM ), //i
+    .B    (P12_INV        ), //i
+    .CIN  (FA_P11A4B7_COUT), //i
+    .COUT (FA_P12A5B7_COUT), //o
+    .SUM  (FA_P12A5B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P12A7B1_COUT), //i
+    .COUT (FA_P13A7B1_COUT), //o
+    .SUM  (FA_P13A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B2 (
+    .A    (FA_P13A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P12A7B2_COUT), //i
+    .COUT (FA_P13A7B2_COUT), //o
+    .SUM  (FA_P13A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B3 (
+    .A    (FA_P13A7B2_SUM ), //i
+    .B    (P10_EXTEN_EN   ), //i
+    .CIN  (FA_P12A7B3_COUT), //i
+    .COUT (FA_P13A7B3_COUT), //o
+    .SUM  (FA_P13A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B4 (
+    .A    (FA_P13A7B3_SUM ), //i
+    .B    (P11_EXTEN_EN   ), //i
+    .CIN  (FA_P12A7B4_COUT), //i
+    .COUT (FA_P13A7B4_COUT), //o
+    .SUM  (FA_P13A7B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B5 (
+    .A    (FA_P13A7B4_SUM ), //i
+    .B    (P12_EXTEN_EN   ), //i
+    .CIN  (FA_P12A7B5_COUT), //i
+    .COUT (FA_P13A7B5_COUT), //o
+    .SUM  (FA_P13A7B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A7B6 (
+    .A    (FA_P13A7B5_SUM ), //i
+    .B    (A7xB6_55       ), //i
+    .CIN  (FA_P12A6B6_COUT), //i
+    .COUT (FA_P13A7B6_COUT), //o
+    .SUM  (FA_P13A7B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P13A6B7 (
+    .A    (FA_P13A7B6_SUM ), //i
+    .B    (P13_INV        ), //i
+    .CIN  (FA_P12A5B7_COUT), //i
+    .COUT (FA_P13A6B7_COUT), //o
+    .SUM  (FA_P13A6B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P13A7B1_COUT), //i
+    .COUT (FA_P14A7B1_COUT), //o
+    .SUM  (FA_P14A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B2 (
+    .A    (FA_P14A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P13A7B2_COUT), //i
+    .COUT (FA_P14A7B2_COUT), //o
+    .SUM  (FA_P14A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B3 (
+    .A    (FA_P14A7B2_SUM ), //i
+    .B    (P10_EXTEN_EN   ), //i
+    .CIN  (FA_P13A7B3_COUT), //i
+    .COUT (FA_P14A7B3_COUT), //o
+    .SUM  (FA_P14A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B4 (
+    .A    (FA_P14A7B3_SUM ), //i
+    .B    (P11_EXTEN_EN   ), //i
+    .CIN  (FA_P13A7B4_COUT), //i
+    .COUT (FA_P14A7B4_COUT), //o
+    .SUM  (FA_P14A7B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B5 (
+    .A    (FA_P14A7B4_SUM ), //i
+    .B    (P12_EXTEN_EN   ), //i
+    .CIN  (FA_P13A7B5_COUT), //i
+    .COUT (FA_P14A7B5_COUT), //o
+    .SUM  (FA_P14A7B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B6 (
+    .A    (FA_P14A7B5_SUM ), //i
+    .B    (P13_EXTEN_EN   ), //i
+    .CIN  (FA_P13A7B6_COUT), //i
+    .COUT (FA_P14A7B6_COUT), //o
+    .SUM  (FA_P14A7B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P14A7B7 (
+    .A    (FA_P14A7B6_SUM ), //i
+    .B    (P14_INV        ), //i
+    .CIN  (FA_P13A6B7_COUT), //i
+    .COUT (FA_P14A7B7_COUT), //o
+    .SUM  (FA_P14A7B7_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B1 (
+    .A    (P7_EXTEN_EN    ), //i
+    .B    (P8_EXTEN_EN    ), //i
+    .CIN  (FA_P14A7B1_COUT), //i
+    .COUT (FA_P15A7B1_COUT), //o
+    .SUM  (FA_P15A7B1_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B2 (
+    .A    (FA_P15A7B1_SUM ), //i
+    .B    (P9_EXTEN_EN    ), //i
+    .CIN  (FA_P14A7B2_COUT), //i
+    .COUT (FA_P15A7B2_COUT), //o
+    .SUM  (FA_P15A7B2_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B3 (
+    .A    (FA_P15A7B2_SUM ), //i
+    .B    (P10_EXTEN_EN   ), //i
+    .CIN  (FA_P14A7B3_COUT), //i
+    .COUT (FA_P15A7B3_COUT), //o
+    .SUM  (FA_P15A7B3_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B4 (
+    .A    (FA_P15A7B3_SUM ), //i
+    .B    (P11_EXTEN_EN   ), //i
+    .CIN  (FA_P14A7B4_COUT), //i
+    .COUT (FA_P15A7B4_COUT), //o
+    .SUM  (FA_P15A7B4_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B5 (
+    .A    (FA_P15A7B4_SUM ), //i
+    .B    (P12_EXTEN_EN   ), //i
+    .CIN  (FA_P14A7B5_COUT), //i
+    .COUT (FA_P15A7B5_COUT), //o
+    .SUM  (FA_P15A7B5_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B6 (
+    .A    (FA_P15A7B5_SUM ), //i
+    .B    (P13_EXTEN_EN   ), //i
+    .CIN  (FA_P14A7B6_COUT), //i
+    .COUT (FA_P15A7B6_COUT), //o
+    .SUM  (FA_P15A7B6_SUM )  //o
+  );
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa FA_P15A7B7 (
+    .A    (FA_P15A7B6_SUM ), //i
+    .B    (P14_EXTEN_EN   ), //i
+    .CIN  (FA_P14A7B7_COUT), //i
+    .COUT (FA_P15A7B7_COUT), //o
+    .SUM  (FA_P15A7B7_SUM )  //o
   );
   assign A0xB0_0 = (io_a[0] && io_b[0]);
   assign A0xB1_8 = (io_a[0] && io_b[1]);
@@ -2430,21 +2430,21 @@ module Mul (
   assign P14_EXTEN_EN = (P14_INV && io_opsigned);
   always @(*) begin
     io_p[0] = A0xB0_0;
-    io_p[1] = HA_P1A0B1_io_s;
-    io_p[2] = HA_P2A0B2_io_s;
-    io_p[3] = HA_P3A0B3_io_s;
-    io_p[4] = HA_P4A0B4_io_s;
-    io_p[5] = HA_P5A0B5_io_s;
-    io_p[6] = HA_P6A0B6_io_s;
-    io_p[7] = FA_P7A0B7_io_s;
-    io_p[8] = FA_P8A1B7_io_s;
-    io_p[9] = FA_P9A2B7_io_s;
-    io_p[10] = FA_P10A3B7_io_s;
-    io_p[11] = FA_P11A4B7_io_s;
-    io_p[12] = FA_P12A5B7_io_s;
-    io_p[13] = FA_P13A6B7_io_s;
-    io_p[14] = FA_P14A7B7_io_s;
-    io_p[15] = FA_P15A7B7_io_s;
+    io_p[1] = HA_P1A0B1_SUM;
+    io_p[2] = HA_P2A0B2_SUM;
+    io_p[3] = HA_P3A0B3_SUM;
+    io_p[4] = HA_P4A0B4_SUM;
+    io_p[5] = HA_P5A0B5_SUM;
+    io_p[6] = HA_P6A0B6_SUM;
+    io_p[7] = FA_P7A0B7_SUM;
+    io_p[8] = FA_P8A1B7_SUM;
+    io_p[9] = FA_P9A2B7_SUM;
+    io_p[10] = FA_P10A3B7_SUM;
+    io_p[11] = FA_P11A4B7_SUM;
+    io_p[12] = FA_P12A5B7_SUM;
+    io_p[13] = FA_P13A6B7_SUM;
+    io_p[14] = FA_P14A7B7_SUM;
+    io_p[15] = FA_P15A7B7_SUM;
   end
 
 
@@ -2480,205 +2480,173 @@ module NegedgeReg (
 
 endmodule
 
-//HA_23 replaced by HA_24
+//DIVUNITFA_83 replaced by DIVUNITFA
 
-//HA_22 replaced by HA_24
+//DIVUNITFA_82 replaced by DIVUNITFA
 
-//HA_21 replaced by HA_24
+//DIVUNITFA_81 replaced by DIVUNITFA
 
-//HA_20 replaced by HA_24
+//DIVUNITFA_80 replaced by DIVUNITFA
 
-//HA_19 replaced by HA_24
+//DIVUNITFA_79 replaced by DIVUNITFA
 
-//HA_18 replaced by HA_24
+//DIVUNITFA_78 replaced by DIVUNITFA
 
-//HA_17 replaced by HA_24
+//DIVUNITFA_77 replaced by DIVUNITFA
 
-//HA_16 replaced by HA_24
+//DIVUNITFA_76 replaced by DIVUNITFA
 
-//HA_15 replaced by HA_24
+//DIVUNITFA_75 replaced by DIVUNITFA
 
-//HA_14 replaced by HA_24
+//DIVUNITFA_74 replaced by DIVUNITFA
 
-//HA_13 replaced by HA_24
+//DIVUNITFA_73 replaced by DIVUNITFA
 
-//HA_12 replaced by HA_24
+//DIVUNITFA_72 replaced by DIVUNITFA
 
-//HA_11 replaced by HA_24
+//DIVUNITFA_71 replaced by DIVUNITFA
 
-//HA_10 replaced by HA_24
+//DIVUNITFA_70 replaced by DIVUNITFA
 
-//HA_9 replaced by HA_24
+//DIVUNITFA_69 replaced by DIVUNITFA
 
-//HA_8 replaced by HA_24
+//DIVUNITFA_68 replaced by DIVUNITFA
 
-//DIVUNIT_83 replaced by DIVUNIT
+//DIVUNITFA_67 replaced by DIVUNITFA
 
-//DIVUNIT_82 replaced by DIVUNIT
+//DIVUNITFA_66 replaced by DIVUNITFA
 
-//DIVUNIT_81 replaced by DIVUNIT
+//DIVUNITFA_65 replaced by DIVUNITFA
 
-//DIVUNIT_80 replaced by DIVUNIT
+//DIVUNITFA_64 replaced by DIVUNITFA
 
-//DIVUNIT_79 replaced by DIVUNIT
+//DIVUNITFA_63 replaced by DIVUNITFA
 
-//DIVUNIT_78 replaced by DIVUNIT
+//DIVUNITFA_62 replaced by DIVUNITFA
 
-//DIVUNIT_77 replaced by DIVUNIT
+//DIVUNITFA_61 replaced by DIVUNITFA
 
-//DIVUNIT_76 replaced by DIVUNIT
+//DIVUNITFA_60 replaced by DIVUNITFA
 
-//DIVUNIT_75 replaced by DIVUNIT
+//DIVUNITFA_59 replaced by DIVUNITFA
 
-//DIVUNIT_74 replaced by DIVUNIT
+//DIVUNITFA_58 replaced by DIVUNITFA
 
-//DIVUNIT_73 replaced by DIVUNIT
+//DIVUNITFA_57 replaced by DIVUNITFA
 
-//DIVUNIT_72 replaced by DIVUNIT
+//DIVUNITFA_56 replaced by DIVUNITFA
 
-//DIVUNIT_71 replaced by DIVUNIT
+//DIVUNITFA_55 replaced by DIVUNITFA
 
-//DIVUNIT_70 replaced by DIVUNIT
+//DIVUNITFA_54 replaced by DIVUNITFA
 
-//DIVUNIT_69 replaced by DIVUNIT
+//DIVUNITFA_53 replaced by DIVUNITFA
 
-//DIVUNIT_68 replaced by DIVUNIT
+//DIVUNITFA_52 replaced by DIVUNITFA
 
-//DIVUNIT_67 replaced by DIVUNIT
+//DIVUNITFA_51 replaced by DIVUNITFA
 
-//DIVUNIT_66 replaced by DIVUNIT
+//DIVUNITFA_50 replaced by DIVUNITFA
 
-//DIVUNIT_65 replaced by DIVUNIT
+//DIVUNITFA_49 replaced by DIVUNITFA
 
-//DIVUNIT_64 replaced by DIVUNIT
+//DIVUNITFA_48 replaced by DIVUNITFA
 
-//DIVUNIT_63 replaced by DIVUNIT
+//DIVUNITFA_47 replaced by DIVUNITFA
 
-//DIVUNIT_62 replaced by DIVUNIT
+//DIVUNITFA_46 replaced by DIVUNITFA
 
-//DIVUNIT_61 replaced by DIVUNIT
+//DIVUNITFA_45 replaced by DIVUNITFA
 
-//DIVUNIT_60 replaced by DIVUNIT
+//DIVUNITFA_44 replaced by DIVUNITFA
 
-//DIVUNIT_59 replaced by DIVUNIT
+//DIVUNITFA_43 replaced by DIVUNITFA
 
-//DIVUNIT_58 replaced by DIVUNIT
+//DIVUNITFA_42 replaced by DIVUNITFA
 
-//DIVUNIT_57 replaced by DIVUNIT
+//DIVUNITFA_41 replaced by DIVUNITFA
 
-//DIVUNIT_56 replaced by DIVUNIT
+//DIVUNITFA_40 replaced by DIVUNITFA
 
-//DIVUNIT_55 replaced by DIVUNIT
+//DIVUNITFA_39 replaced by DIVUNITFA
 
-//DIVUNIT_54 replaced by DIVUNIT
+//DIVUNITFA_38 replaced by DIVUNITFA
 
-//DIVUNIT_53 replaced by DIVUNIT
+//DIVUNITFA_37 replaced by DIVUNITFA
 
-//DIVUNIT_52 replaced by DIVUNIT
+//DIVUNITFA_36 replaced by DIVUNITFA
 
-//DIVUNIT_51 replaced by DIVUNIT
+//DIVUNITFA_35 replaced by DIVUNITFA
 
-//DIVUNIT_50 replaced by DIVUNIT
+//DIVUNITFA_34 replaced by DIVUNITFA
 
-//DIVUNIT_49 replaced by DIVUNIT
+//DIVUNITFA_33 replaced by DIVUNITFA
 
-//DIVUNIT_48 replaced by DIVUNIT
+//DIVUNITFA_32 replaced by DIVUNITFA
 
-//DIVUNIT_47 replaced by DIVUNIT
+//DIVUNITFA_31 replaced by DIVUNITFA
 
-//DIVUNIT_46 replaced by DIVUNIT
+//DIVUNITFA_30 replaced by DIVUNITFA
 
-//DIVUNIT_45 replaced by DIVUNIT
+//DIVUNITFA_29 replaced by DIVUNITFA
 
-//DIVUNIT_44 replaced by DIVUNIT
+//DIVUNITFA_28 replaced by DIVUNITFA
 
-//DIVUNIT_43 replaced by DIVUNIT
+//DIVUNITFA_27 replaced by DIVUNITFA
 
-//DIVUNIT_42 replaced by DIVUNIT
+//DIVUNITFA_26 replaced by DIVUNITFA
 
-//DIVUNIT_41 replaced by DIVUNIT
+//DIVUNITFA_25 replaced by DIVUNITFA
 
-//DIVUNIT_40 replaced by DIVUNIT
+//DIVUNITFA_24 replaced by DIVUNITFA
 
-//DIVUNIT_39 replaced by DIVUNIT
+//DIVUNITFA_23 replaced by DIVUNITFA
 
-//DIVUNIT_38 replaced by DIVUNIT
+//DIVUNITFA_22 replaced by DIVUNITFA
 
-//DIVUNIT_37 replaced by DIVUNIT
+//DIVUNITFA_21 replaced by DIVUNITFA
 
-//DIVUNIT_36 replaced by DIVUNIT
+//DIVUNITFA_20 replaced by DIVUNITFA
 
-//DIVUNIT_35 replaced by DIVUNIT
+//DIVUNITFA_19 replaced by DIVUNITFA
 
-//DIVUNIT_34 replaced by DIVUNIT
+//DIVUNITFA_18 replaced by DIVUNITFA
 
-//DIVUNIT_33 replaced by DIVUNIT
+//DIVUNITFA_17 replaced by DIVUNITFA
 
-//DIVUNIT_32 replaced by DIVUNIT
+//DIVUNITFA_16 replaced by DIVUNITFA
 
-//DIVUNIT_31 replaced by DIVUNIT
+//DIVUNITFA_15 replaced by DIVUNITFA
 
-//DIVUNIT_30 replaced by DIVUNIT
+//DIVUNITFA_14 replaced by DIVUNITFA
 
-//DIVUNIT_29 replaced by DIVUNIT
+//DIVUNITFA_13 replaced by DIVUNITFA
 
-//DIVUNIT_28 replaced by DIVUNIT
+//DIVUNITFA_12 replaced by DIVUNITFA
 
-//DIVUNIT_27 replaced by DIVUNIT
+//DIVUNITFA_11 replaced by DIVUNITFA
 
-//DIVUNIT_26 replaced by DIVUNIT
+//DIVUNITFA_10 replaced by DIVUNITFA
 
-//DIVUNIT_25 replaced by DIVUNIT
+//DIVUNITFA_9 replaced by DIVUNITFA
 
-//DIVUNIT_24 replaced by DIVUNIT
+//DIVUNITFA_8 replaced by DIVUNITFA
 
-//DIVUNIT_23 replaced by DIVUNIT
+//DIVUNITFA_7 replaced by DIVUNITFA
 
-//DIVUNIT_22 replaced by DIVUNIT
+//DIVUNITFA_6 replaced by DIVUNITFA
 
-//DIVUNIT_21 replaced by DIVUNIT
+//DIVUNITFA_5 replaced by DIVUNITFA
 
-//DIVUNIT_20 replaced by DIVUNIT
+//DIVUNITFA_4 replaced by DIVUNITFA
 
-//DIVUNIT_19 replaced by DIVUNIT
+//DIVUNITFA_3 replaced by DIVUNITFA
 
-//DIVUNIT_18 replaced by DIVUNIT
+//DIVUNITFA_2 replaced by DIVUNITFA
 
-//DIVUNIT_17 replaced by DIVUNIT
+//DIVUNITFA_1 replaced by DIVUNITFA
 
-//DIVUNIT_16 replaced by DIVUNIT
-
-//DIVUNIT_15 replaced by DIVUNIT
-
-//DIVUNIT_14 replaced by DIVUNIT
-
-//DIVUNIT_13 replaced by DIVUNIT
-
-//DIVUNIT_12 replaced by DIVUNIT
-
-//DIVUNIT_11 replaced by DIVUNIT
-
-//DIVUNIT_10 replaced by DIVUNIT
-
-//DIVUNIT_9 replaced by DIVUNIT
-
-//DIVUNIT_8 replaced by DIVUNIT
-
-//DIVUNIT_7 replaced by DIVUNIT
-
-//DIVUNIT_6 replaced by DIVUNIT
-
-//DIVUNIT_5 replaced by DIVUNIT
-
-//DIVUNIT_4 replaced by DIVUNIT
-
-//DIVUNIT_3 replaced by DIVUNIT
-
-//DIVUNIT_2 replaced by DIVUNIT
-
-//DIVUNIT_1 replaced by DIVUNIT
-
-module DIVUNIT (
+module DIVUNITFA (
   input               io_a,
   input               io_b,
   input               io_y,
@@ -2687,231 +2655,17 @@ module DIVUNIT (
   output              io_c
 );
 
-  wire                a_and_b;
-  wire                b_and_y;
-  wire                a_and_y;
-  wire                carry;
-  wire                sum;
-
-  assign a_and_b = (io_a && io_b);
-  assign b_and_y = (io_b && io_y);
-  assign a_and_y = (io_a && io_y);
-  assign carry = ((a_and_b || b_and_y) || a_and_y);
-  assign sum = ((io_a ^ io_b) ^ io_y);
-  assign io_s = (io_sel ? sum : io_a);
-  assign io_c = carry;
-
-endmodule
-
-//HA_7 replaced by HA_24
-
-//HA_6 replaced by HA_24
-
-//HA_5 replaced by HA_24
-
-//HA_4 replaced by HA_24
-
-//HA_3 replaced by HA_24
-
-//HA_2 replaced by HA_24
-
-//HA_1 replaced by HA_24
-
-//HA replaced by HA_24
-
-//FA_77 replaced by FA
-
-//FA_76 replaced by FA
-
-//FA_75 replaced by FA
-
-//FA_74 replaced by FA
-
-//FA_73 replaced by FA
-
-//FA_72 replaced by FA
-
-//FA_71 replaced by FA
-
-//FA_70 replaced by FA
-
-//FA_69 replaced by FA
-
-//FA_68 replaced by FA
-
-//FA_67 replaced by FA
-
-//FA_66 replaced by FA
-
-//FA_65 replaced by FA
-
-//FA_64 replaced by FA
-
-//FA_63 replaced by FA
-
-//FA_62 replaced by FA
-
-//FA_61 replaced by FA
-
-//FA_60 replaced by FA
-
-//FA_59 replaced by FA
-
-//FA_58 replaced by FA
-
-//FA_57 replaced by FA
-
-//FA_56 replaced by FA
-
-//FA_55 replaced by FA
-
-//FA_54 replaced by FA
-
-//FA_53 replaced by FA
-
-//FA_52 replaced by FA
-
-//FA_51 replaced by FA
-
-//FA_50 replaced by FA
-
-//FA_49 replaced by FA
-
-//FA_48 replaced by FA
-
-//FA_47 replaced by FA
-
-//FA_46 replaced by FA
-
-//FA_45 replaced by FA
-
-//FA_44 replaced by FA
-
-//FA_43 replaced by FA
-
-//FA_42 replaced by FA
-
-//FA_41 replaced by FA
-
-//FA_40 replaced by FA
-
-//FA_39 replaced by FA
-
-//FA_38 replaced by FA
-
-//FA_37 replaced by FA
-
-//FA_36 replaced by FA
-
-//FA_35 replaced by FA
-
-//FA_34 replaced by FA
-
-//FA_33 replaced by FA
-
-//FA_32 replaced by FA
-
-//FA_31 replaced by FA
-
-//FA_30 replaced by FA
-
-//FA_29 replaced by FA
-
-//FA_28 replaced by FA
-
-//FA_27 replaced by FA
-
-//FA_26 replaced by FA
-
-//FA_25 replaced by FA
-
-//FA_24 replaced by FA
-
-//FA_23 replaced by FA
-
-//FA_22 replaced by FA
-
-//FA_21 replaced by FA
-
-//FA_20 replaced by FA
-
-//FA_19 replaced by FA
-
-//FA_18 replaced by FA
-
-//FA_17 replaced by FA
-
-//FA_16 replaced by FA
-
-//FA_15 replaced by FA
-
-//HA_29 replaced by HA_24
-
-//FA_14 replaced by FA
-
-//FA_13 replaced by FA
-
-//FA_12 replaced by FA
-
-//FA_11 replaced by FA
-
-//FA_10 replaced by FA
-
-//HA_28 replaced by HA_24
-
-//FA_9 replaced by FA
-
-//FA_8 replaced by FA
-
-//FA_7 replaced by FA
-
-//FA_6 replaced by FA
-
-//HA_27 replaced by HA_24
-
-//FA_5 replaced by FA
-
-//FA_4 replaced by FA
-
-//FA_3 replaced by FA
-
-//HA_26 replaced by HA_24
-
-//FA_2 replaced by FA
-
-//FA_1 replaced by FA
-
-//HA_25 replaced by HA_24
-
-module FA (
-  input               io_a,
-  input               io_b,
-  input               io_y,
-  output              io_s,
-  output              io_c
-);
-
-  wire                a_and_b;
-  wire                b_and_y;
-  wire                a_and_y;
-
-  assign a_and_b = (io_a && io_b);
-  assign b_and_y = (io_b && io_y);
-  assign a_and_y = (io_a && io_y);
-  assign io_c = ((a_and_b || b_and_y) || a_and_y);
-  assign io_s = ((io_a ^ io_b) ^ io_y);
-
-endmodule
-
-module HA_24 (
-  input               io_a,
-  input               io_b,
-  output              io_s,
-  output              io_c
-);
-
-
-  assign io_c = (io_a && io_b);
-  assign io_s = (io_a ^ io_b);
+  wire                fA_COUT;
+  wire                fA_SUM;
+
+  (* keep , syn_keep *) sky130_fd_sc_hd__fa fA (
+    .A    (io_a   ), //i
+    .B    (io_b   ), //i
+    .CIN  (io_y   ), //i
+    .COUT (fA_COUT), //o
+    .SUM  (fA_SUM )  //o
+  );
+  assign io_s = (io_sel ? fA_SUM : io_a);
+  assign io_c = fA_COUT;
 
 endmodule

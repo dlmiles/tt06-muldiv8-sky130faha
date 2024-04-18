@@ -2,6 +2,22 @@
 
 # Combinational multiply / divider unit (8+8 input)
 
+This is a clone of tt06-muldiv8 but uses the SKY130 FA (Full Adder) and
+HA (Half Adder) specific cells.  The current flow is not able to manage
+these kinds of standard cells due to their 2 output nature, so this project
+intends to allow comparison between, to validate that using them has some
+benefit.
+
+Maybe there should be a DIVUNIT cell that attempts to combine the restoring
+MUX into the same area.  This is something to evaluate in the future for
+this topology.
+
+NOTE: at this time PDK 2023.12.24 the sky130 FA with drive level 4 is in the
+DONT_USE_CELLS sky130_fd_sc_hd__fa_4 list.  It is not clear why that is the
+case at this time.
+
+## Original tt06-muldiv8 documentation
+
 Next iteration from original tt04-muldiv4 towards painting multipler GDS
 directly.  This time we use SpinalHDL functional programming to generate
 netlist for toplogy instead of logicsim-evolution.
@@ -12,6 +28,7 @@ design, due to the way it integrated with the previous or next component,
 due to signal pruning, for example use of half-adder instead of full-adder).
 
 [More Documentation](docs/info.md)
+[Project: tt06-muldiv8](https://github.com/dlmiles/tt06-muldiv8)
 
 # Tiny Tapeout Verilog Project Template
 

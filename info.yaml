@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "MULDIV unit (8-bit signed/unsigned)"      # Project title
+  title:        "MULDIV unit (8-bit signed/unsigned) with sky130 HA/FA cells"      # Project title
   author:       "Darryl Miles"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Combinational Multiply and Divide Unit (signed and unsigned)"      # One line description of what your project does
@@ -11,12 +11,14 @@ project:
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_dlmiles_muldiv8"
+  top_module:  "tt_um_dlmiles_muldiv8_sky130faha"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
-    - "top_tt_um_dlmiles_muldiv8.v"
+    - "top_tt_um_dlmiles_muldiv8_sky130faha.v"
     - "pdk_sky130/sky130_fd_sc_hd__dlrtp.v"
+    - "pdk_sky130/sky130_fd_sc_hd__fa.v"
+    - "pdk_sky130/sky130_fd_sc_hd__ha.v"
     - "TT06MULDIV8Top.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.

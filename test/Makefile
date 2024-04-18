@@ -6,9 +6,13 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES += pdk_generic/sky130_fd_sc_hd__dlrtp_1.v
+PROJECT_SOURCES += pdk_generic/sky130_fd_sc_hd__fa_1.v
+PROJECT_SOURCES += pdk_generic/sky130_fd_sc_hd__ha_1.v
 PROJECT_SOURCES += pdk_sky130/sky130_fd_sc_hd__dlrtp.v
+PROJECT_SOURCES += pdk_sky130/sky130_fd_sc_hd__fa.v
+PROJECT_SOURCES += pdk_sky130/sky130_fd_sc_hd__ha.v
 PROJECT_SOURCES += sky130_toolbox/sky130_behavioral_udp_dlatch_pr.v
-PROJECT_SOURCES += top_tt_um_dlmiles_muldiv8.v
+PROJECT_SOURCES += top_tt_um_dlmiles_muldiv8_sky130faha.v
 PROJECT_SOURCES += TT06MULDIV8Top.v
 
 ifneq ($(CI),true)

@@ -36,8 +36,8 @@ module tb ();
   wire [7:0] uio_oe;
 
   // Replace tt_um_example with your module name:
-  /*tt_um_dlmiles_muldiv8*/
-  tt_um_dlmiles_muldiv8 dut (
+  /*tt_um_dlmiles_muldiv8_sky130faha*/
+  tt_um_dlmiles_muldiv8_sky130faha dut (
       // Include power ports for the Gate Level test:
 `ifdef USE_POWER_PINS
       .VPWR   (1'b1),		//i
